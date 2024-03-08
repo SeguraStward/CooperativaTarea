@@ -1,0 +1,8 @@
+
+# Java
+*.class
+
+# Maven
+target/
+
+!**/maven-wrapper/**/maven-wrapper.jar
