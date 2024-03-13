@@ -4,10 +4,10 @@
  */
 package cr.ac.una.cooperativa.classes;
 
-/**
- *
- * @author stwar
- */
 public class cooperativa {
+    
+    
+    
+    
     
 }
