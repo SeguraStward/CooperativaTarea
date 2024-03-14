@@ -6,7 +6,7 @@ package cr.ac.una.cooperativa.classes;
 
 /**
  *
- * @author stwar
+ * @author stward
  */
 public class Asociado {
     
