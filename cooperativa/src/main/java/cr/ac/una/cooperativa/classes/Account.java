@@ -4,10 +4,34 @@
  */
 package cr.ac.una.cooperativa.classes;
 
-/**
- *
- * @author stwar
- */
+
 public class Account {
+    private String name;
+    private float money;
     
+    public Account(){
+    name = new String();
+    money = 0;
+    }
+    
+    public Account(String name, float money){
+    this.name = name;
+    this.money = money; 
+    }
+    
+   public String getName(){
+       return this.name;
+    }
+   public void setName(String name){
+       this.name = name;
+   }
+   
+   public float getMoney(){
+       return this.money;
+   }
+   
+   public void setmoney(float money){
+       this.money = money;   
+   }
+      
 }
