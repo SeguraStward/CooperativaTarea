@@ -4,13 +4,26 @@
  */
 package cr.ac.una.cooperativa.classes;
 
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
->>>>>>> f6b9139af434da23261efb0519123e7125db7ef6
-public class cooperativa {
+
+
+public class Cooperativa {
+    private String name;
+    private Image image;
+    private List<Account> accounts;
+    private List<Affiliated> affiliates;
     
     
+    public Cooperativa(){
+        this.name = "";
+        this.image = null;
+        this.accounts = new ArrayList<>();
+        this.affiliates = new ArrayList<>();
+
+    }
     
-    
-    
-}
+ }
