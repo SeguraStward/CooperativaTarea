@@ -6,6 +6,7 @@ package cr.ac.una.cooperativa.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -13,20 +14,21 @@ public class Affiliated {
     private String name;
     private List<Account> accounts;
     private String information;
-    private ImageView picture;
-    
+    private Image picture;
+    private float buzon;
     public Affiliated(){
-        this.name = new String();
-        this.accounts = new ArrayList<>();
-        this.information = new String();
-        this.picture = new ImageView();
+        name = "";
+        accounts = new ArrayList<>();
+        information = "";
+        picture = null;
+        
     }
     
-    public Affiliated(String name, List<Account> cuentas, String information, ImageView picture){
+    public Affiliated(String name, String information){
         this.name = name;
-        this.accounts = cuentas;
+        this.accounts = new ArrayList<>();
         this.information = information;
-        this.picture = picture;
+        this.picture = null;
     }
     
     
@@ -54,7 +56,7 @@ public class Affiliated {
        this.information = info;
    }
     
-   public ImageView getImageView(){
+   public Image getImageView(){
        return this.picture;
    }
     

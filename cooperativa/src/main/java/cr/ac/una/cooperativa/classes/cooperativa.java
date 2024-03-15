@@ -7,7 +7,6 @@ package cr.ac.una.cooperativa.classes;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 
 
@@ -19,11 +18,34 @@ public class Cooperativa {
     
     
     public Cooperativa(){
-        this.name = "";
-        this.image = null;
-        this.accounts = new ArrayList<>();
-        this.affiliates = new ArrayList<>();
+        name = "";
+        image = null;
+        accounts = new ArrayList<>();
+        affiliates = new ArrayList<>();
 
+    }
+    
+    public Account getAccount(int index){
+        return accounts.get(index);
+    }
+    
+    public void addAccount(Account account){
+           accounts.add(account);
+    }
+    
+    public Affiliated getAffiliated(int index){
+        return affiliates.get(index);
+    }
+    
+    public void addAccount(Affiliated affiliate){
+           affiliates.add(affiliate);
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
     }
     
  }
