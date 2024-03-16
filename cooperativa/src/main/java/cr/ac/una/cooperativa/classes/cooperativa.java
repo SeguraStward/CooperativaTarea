@@ -10,14 +10,14 @@ import javafx.scene.image.Image;
 
 
 
-public class Cooperativa {
+public class cooperativa {
     private String name;
     private Image image;
     private List<Account> accounts;
     private List<Affiliated> affiliates;
     
     
-    public Cooperativa(){
+    public cooperativa(){
         name = "";
         image = null;
         accounts = new ArrayList<>();
