@@ -47,5 +47,29 @@ public class cooperativa {
     public void setName(String name){
         this.name = name;
     }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public List<Affiliated> getAffiliates() {
+        return affiliates;
+    }
+
+    public void setAffiliates(List<Affiliated> affiliates) {
+        this.affiliates = affiliates;
+    }
     
  }
