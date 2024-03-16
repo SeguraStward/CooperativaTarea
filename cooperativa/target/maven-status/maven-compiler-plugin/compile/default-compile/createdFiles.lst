@@ -3,6 +3,6 @@ cr\ac\una\cooperativa\classes\Affiliated.class
 cr\ac\una\cooperativa\App.class
 cr\ac\una\cooperativa\controllers\AssociatedController.class
 cr\ac\una\cooperativa\controllers\FunctionaryController.class
-cr\ac\una\cooperativa\classes\Cooperativa.class
 cr\ac\una\cooperativa\controllers\MainWindowController.class
 cr\ac\una\cooperativa\classes\Account.class
+cr\ac\una\cooperativa\classes\cooperativa.class

@@ -10,14 +10,14 @@ import javafx.scene.image.Image;
 
 
 
-public class Cooperativa {
+public class cooperativa {
     private String name;
     private Image image;
     private List<Account> accounts;
     private List<Affiliated> affiliates;
     
     
-    public Cooperativa(){
+    public cooperativa(){
         name = "";
         image = null;
         accounts = new ArrayList<>();
@@ -46,6 +46,30 @@ public class Cooperativa {
     }
     public void setName(String name){
         this.name = name;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public List<Affiliated> getAffiliates() {
+        return affiliates;
+    }
+
+    public void setAffiliates(List<Affiliated> affiliates) {
+        this.affiliates = affiliates;
     }
     
  }
