@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryController">
+   <children>
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
+         <top>
+            <HBox fx:id="head" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="compayLabel" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <bottom>
+            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="selectionVbox" alignment="CENTER" prefHeight="281.0" prefWidth="449.0" spacing="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <MFXButton fx:id="mantenimientoBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="25.0" prefWidth="253.0" text="Mantenimiento de asociados">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </MFXButton>
+                        <MFXButton fx:id="carnetBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="108.0" prefHeight="25.0" prefWidth="253.0" text="Impresion de carnet" />
+                        <MFXButton fx:id="aperturaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="121.0" prefHeight="25.0" prefWidth="253.0" text="Apertura de cuentas" />
+                        <MFXButton fx:id="moneyBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="133.0" prefHeight="25.0" prefWidth="253.0" text=" Retiro y deposito de dinero" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>
