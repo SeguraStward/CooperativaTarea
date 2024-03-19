@@ -4,24 +4,25 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 /**
  *
- * @author stwar
+ * @author stward segura
  */
-public class ProfessorController {
+public class affiliateDepositBoxController {
 
+    @FXML
+    private StackPane mainPane;
     @FXML
     private BorderPane mainBorderPane;
     @FXML
@@ -29,24 +30,24 @@ public class ProfessorController {
     @FXML
     private ImageView companyImage;
     @FXML
+    private Label companyLabel;
+    @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private Label compayName;
+    private TextField folioField;
     @FXML
-    private VBox vboxCompanySettings;
+    private ChoiceBox<?> billeteChoiceBox;
     @FXML
-    private MFXTextField companyInputName;
+    private Label label;
     @FXML
-    private MFXButton compBtnImg;
+    private ChoiceBox<?> monedaChoiceBox;
     @FXML
-    private ScrollPane accountScroll;
+    private ChoiceBox<?> amountOfBillete;
     @FXML
-    private VBox vboxAccounts;
+    private ChoiceBox<?> amountOfMoneda;
     @FXML
-    private StackPane mainPane;
+    private Button depositBtn;
     @FXML
-    private MFXTextField accountField;
-    @FXML
-    private MFXButton addAccountBtn;
+    private Label labelWarning;
     
 }

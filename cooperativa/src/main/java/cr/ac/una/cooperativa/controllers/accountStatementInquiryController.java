@@ -4,24 +4,26 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 /**
  *
- * @author stwar
+ * @author stward segura
  */
-public class ProfessorController {
+public class accountStatementInquiryController {
 
+    @FXML
+    private StackPane mainPane;
     @FXML
     private BorderPane mainBorderPane;
     @FXML
@@ -29,24 +31,22 @@ public class ProfessorController {
     @FXML
     private ImageView companyImage;
     @FXML
+    private Label companyLabel;
+    @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private Label compayName;
+    private Label label;
     @FXML
-    private VBox vboxCompanySettings;
+    private ChoiceBox<?> accountChoiceBox;
     @FXML
-    private MFXTextField companyInputName;
+    private TextField folioField;
     @FXML
-    private MFXButton compBtnImg;
+    private Button showInfoBtn;
     @FXML
-    private ScrollPane accountScroll;
+    private Label labelWarning;
     @FXML
-    private VBox vboxAccounts;
+    private TextArea infoField;
     @FXML
-    private StackPane mainPane;
-    @FXML
-    private MFXTextField accountField;
-    @FXML
-    private MFXButton addAccountBtn;
+    private Button deleteInfoBtn;
     
 }

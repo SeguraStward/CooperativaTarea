@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.MainWindowController">
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.AffiliatedWindowController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
             <HBox fx:id="head" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
@@ -33,13 +33,13 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="277.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox fx:id="selectionHbox" alignment="CENTER" layoutX="1.0" layoutY="44.0" prefHeight="189.0" prefWidth="447.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox fx:id="selectionHbox" alignment="CENTER" layoutY="3.0" prefHeight="217.0" prefWidth="449.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <MFXButton fx:id="professorBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="80.0" prefWidth="88.0" text="Professor" />
-                        <MFXButton fx:id="functionaryBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="Functionary" />
-                        <MFXButton fx:id="AffiliateBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="Affiliate" HBox.hgrow="ALWAYS" />
+                        <MFXButton fx:id="registrarseBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="80.0" prefWidth="88.0" text="Registrarse" />
+                        <MFXButton fx:id="consultaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="Consulta" />
+                        <MFXButton fx:id="buzonBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="buzón" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

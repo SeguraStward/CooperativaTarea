@@ -8,15 +8,18 @@ package cr.ac.una.cooperativa.classes;
 public class Account {
     private String name;
     private float money;
+    private String description;
     
     public Account(){
-    name = new String();
+    name = "";
     money = 0;
+    description = "";
     }
     
-    public Account(String name, float money){
+    public Account(String name, float money,String description){
     this.name = name;
     this.money = money; 
+    this.description = description;
     }
     
    public String getName(){

@@ -4,12 +4,15 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
-import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -19,32 +22,38 @@ import javafx.scene.layout.StackPane;
 /**
  * FXML Controller class
  *
- * @author stwar
+ * @author stward segura
  */
-public class MainWindowController implements Initializable {
+public class AffiliatedWindowController implements Initializable {
 
-    @FXML
-    private BorderPane mainBorderPane;
-    @FXML
-    private ImageView companyImage;
-    @FXML
-    private Label compayLabel;
-    @FXML
-    private AnchorPane mainAnchor;
-    @FXML
-    private MFXButton professorBtn;
-    @FXML
-    private MFXButton functionaryBtn;
-    @FXML
-    private MFXButton AffiliateBtn;
     @FXML
     private StackPane mainPane;
     @FXML
+    private BorderPane mainBorderPane;
+    @FXML
     private HBox head;
     @FXML
-    private HBox selectionHbox;
+    private ImageView companyImage;
+    @FXML
+    private AnchorPane mainAnchor;
     @FXML
     private Label companyLabel;
+    @FXML
+    private Label label;
+    @FXML
+    private Label labelWarning;
+    @FXML
+    private TextField folioField;
+    @FXML
+    private ChoiceBox<?> billeteChoiceBox;
+    @FXML
+    private ChoiceBox<?> monedaChoiceBox;
+    @FXML
+    private ChoiceBox<?> amountOfBillete;
+    @FXML
+    private ChoiceBox<?> amountOfMoneda;
+    @FXML
+    private Button depositBtn;
 
     /**
      * Initializes the controller class.
@@ -55,21 +64,5 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    public ImageView getCompanyImage() {
-        return companyImage;
-    }
-
-    public void setCompanyImage(ImageView companyImage) {
-        this.companyImage = companyImage;
-    }
-
-    public Label getCompayLabel() {
-        return compayLabel;
-    }
-
-    public void setCompayLabel(Label compayLabel) {
-        this.compayLabel = compayLabel;
-    }
     
 }

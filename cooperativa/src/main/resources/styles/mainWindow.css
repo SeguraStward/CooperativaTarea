@@ -1,6 +1,3 @@
-#mainPane{
-    -fx-background-color:brown;
-}
-#AffiliateBtn{
-    -fx-background-color:ladder;
+#pane{
+    -fx-background-color:blue;
 }
