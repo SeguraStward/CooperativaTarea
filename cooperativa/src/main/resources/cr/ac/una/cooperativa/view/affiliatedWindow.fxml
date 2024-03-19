@@ -32,7 +32,7 @@
                </BorderPane.margin>
             </HBox>
          </top>
-         <bottom>
+         <center>
             <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox fx:id="selectionHbox" alignment="CENTER" layoutY="3.0" prefHeight="217.0" prefWidth="449.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -44,7 +44,7 @@
                   </HBox>
                </children>
             </AnchorPane>
-         </bottom>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

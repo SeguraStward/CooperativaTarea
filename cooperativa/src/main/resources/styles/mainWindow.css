@@ -1,10 +1,3 @@
-#mainPane{
-  -fx-background-color:blue;
-}
-#AffiliateBtn{
-   
-}
-
-#mainBorderPane{
-   -fx-background-color:white;
+#pane{
+    -fx-background-color:blue;
 }

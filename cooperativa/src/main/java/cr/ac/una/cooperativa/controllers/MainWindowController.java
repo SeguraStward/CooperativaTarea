@@ -43,6 +43,8 @@ public class MainWindowController implements Initializable {
     private HBox head;
     @FXML
     private HBox selectionHbox;
+    @FXML
+    private Label companyLabel;
 
     /**
      * Initializes the controller class.

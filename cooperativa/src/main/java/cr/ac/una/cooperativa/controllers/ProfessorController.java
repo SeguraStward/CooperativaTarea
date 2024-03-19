@@ -43,6 +43,10 @@ public class ProfessorController {
     @FXML
     private VBox vboxAccounts;
     @FXML
-    private StackPane mainPane2;
+    private StackPane mainPane;
+    @FXML
+    private MFXTextField accountField;
+    @FXML
+    private MFXButton addAccountBtn;
     
 }

@@ -9,9 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,7 +22,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author stward segura
  */
-public class AffiliatedWindowController implements Initializable {
+public class CarnetPrintingController implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -35,30 +33,20 @@ public class AffiliatedWindowController implements Initializable {
     @FXML
     private ImageView companyImage;
     @FXML
-    private AnchorPane mainAnchor;
-    @FXML
     private Label companyLabel;
     @FXML
-    private Label label;
-    @FXML
-    private Label labelWarning;
+    private AnchorPane mainAnchor;
     @FXML
     private TextField folioField;
     @FXML
-    private ChoiceBox<?> billeteChoiceBox;
+    private Button printBtn;
     @FXML
-    private ChoiceBox<?> monedaChoiceBox;
+    private Label labelWarning;
     @FXML
-    private ChoiceBox<?> amountOfBillete;
-    @FXML
-    private ChoiceBox<?> amountOfMoneda;
-    @FXML
-    private Button depositBtn;
+    private Label confirmationLabel;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryController">
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.accountStatementInquiryController">
    <children>
       <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
@@ -34,18 +37,17 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="selectionVbox" alignment="CENTER" prefHeight="281.0" prefWidth="449.0" spacing="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="275.0" prefWidth="449.0" spacing="10.0">
                      <children>
-                        <MFXButton fx:id="mantenimientoBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="25.0" prefWidth="253.0" text="Mantenimiento de asociados">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </MFXButton>
-                        <MFXButton fx:id="carnetBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="108.0" prefHeight="25.0" prefWidth="253.0" text="Impresion de carnet" />
-                        <MFXButton fx:id="aperturaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="121.0" prefHeight="25.0" prefWidth="253.0" text="Apertura de cuentas" />
-                        <MFXButton fx:id="moneyBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="44.0" layoutY="133.0" prefHeight="25.0" prefWidth="253.0" text=" Retiro y deposito de dinero" />
+                        <Label fx:id="label" prefHeight="31.0" prefWidth="149.0" text="Selecciona tipo de cuenta" />
+                        <ChoiceBox fx:id="accountChoiceBox" prefHeight="25.0" prefWidth="153.0" />
+                        <TextField fx:id="folioField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="153.0" promptText="Ingresa tu folio" />
+                        <Button fx:id="showInfoBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Mostrar informacion" />
+                        <Label fx:id="labelWarning" alignment="CENTER" prefHeight="25.0" prefWidth="181.0" />
+                        <TextArea fx:id="infoField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="270.0" />
+                        <Button fx:id="deleteInfoBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Delete info" />
                      </children>
                   </VBox>
                </children>

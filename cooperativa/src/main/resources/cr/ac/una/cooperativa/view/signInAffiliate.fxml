@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.AffiliatedWindowController">
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.signInAffiliateController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
@@ -33,7 +33,7 @@
                </BorderPane.margin>
             </HBox>
          </top>
-         <bottom>
+         <center>
             <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="nameField" layoutX="116.0" layoutY="57.0" prefHeight="25.0" prefWidth="151.0" promptText="Nombre " />
@@ -43,7 +43,7 @@
                   <ImageView fx:id="userPicture" fitHeight="101.0" fitWidth="109.0" layoutX="118.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-         </bottom>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

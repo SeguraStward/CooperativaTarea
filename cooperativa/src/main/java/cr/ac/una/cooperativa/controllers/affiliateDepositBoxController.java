@@ -1,17 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cr.ac.una.cooperativa.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -20,11 +16,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 /**
- * FXML Controller class
  *
  * @author stward segura
  */
-public class AffiliatedWindowController implements Initializable {
+public class affiliateDepositBoxController {
 
     @FXML
     private StackPane mainPane;
@@ -35,17 +30,15 @@ public class AffiliatedWindowController implements Initializable {
     @FXML
     private ImageView companyImage;
     @FXML
-    private AnchorPane mainAnchor;
-    @FXML
     private Label companyLabel;
     @FXML
-    private Label label;
-    @FXML
-    private Label labelWarning;
+    private AnchorPane mainAnchor;
     @FXML
     private TextField folioField;
     @FXML
     private ChoiceBox<?> billeteChoiceBox;
+    @FXML
+    private Label label;
     @FXML
     private ChoiceBox<?> monedaChoiceBox;
     @FXML
@@ -54,15 +47,7 @@ public class AffiliatedWindowController implements Initializable {
     private ChoiceBox<?> amountOfMoneda;
     @FXML
     private Button depositBtn;
-
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private Label labelWarning;
     
 }

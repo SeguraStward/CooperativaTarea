@@ -4,28 +4,23 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
-import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 /**
  *
- * @author stwar
+ * @author stward segura
  */
-public class FunctionaryController {
+public class signInAffiliateController {
 
     @FXML
     private StackPane mainPane;
-    @FXML
-    private BorderPane mainBorderPane;
     @FXML
     private HBox head;
     @FXML
@@ -35,14 +30,14 @@ public class FunctionaryController {
     @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private VBox selectionVbox;
+    private TextField nameField;
     @FXML
-    private MFXButton mantenimientoBtn;
+    private TextField ageField;
     @FXML
-    private MFXButton carnetBtn;
+    private Button takePhotoBtn;
     @FXML
-    private MFXButton aperturaBtn;
+    private Button saveBtn;
     @FXML
-    private MFXButton moneyBtn;
+    private ImageView userPicture;
     
 }

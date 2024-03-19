@@ -9,9 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,7 +22,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author stward segura
  */
-public class AffiliatedWindowController implements Initializable {
+public class FunctionaryMaintenanceController implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -35,25 +33,19 @@ public class AffiliatedWindowController implements Initializable {
     @FXML
     private ImageView companyImage;
     @FXML
-    private AnchorPane mainAnchor;
-    @FXML
     private Label companyLabel;
     @FXML
-    private Label label;
+    private AnchorPane mainAnchor;
     @FXML
-    private Label labelWarning;
+    private TextField nameField;
     @FXML
-    private TextField folioField;
+    private TextField ageField;
     @FXML
-    private ChoiceBox<?> billeteChoiceBox;
+    private Button takePhotoBtn;
     @FXML
-    private ChoiceBox<?> monedaChoiceBox;
+    private Button addBtn;
     @FXML
-    private ChoiceBox<?> amountOfBillete;
-    @FXML
-    private ChoiceBox<?> amountOfMoneda;
-    @FXML
-    private Button depositBtn;
+    private ImageView userPicture;
 
     /**
      * Initializes the controller class.
