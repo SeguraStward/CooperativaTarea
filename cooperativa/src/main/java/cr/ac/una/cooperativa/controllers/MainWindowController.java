@@ -28,8 +28,6 @@ public class MainWindowController implements Initializable {
     @FXML
     private ImageView companyImage;
     @FXML
-    private Label compayLabel;
-    @FXML
     private AnchorPane mainAnchor;
     @FXML
     private MFXButton professorBtn;
@@ -65,11 +63,11 @@ public class MainWindowController implements Initializable {
     }
 
     public Label getCompayLabel() {
-        return compayLabel;
+        return companyLabel;
     }
 
     public void setCompayLabel(Label compayLabel) {
-        this.compayLabel = compayLabel;
+        this.companyLabel = compayLabel;
     }
     
 }
