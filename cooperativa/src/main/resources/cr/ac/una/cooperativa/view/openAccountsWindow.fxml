@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryMaintenanceController">
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.OpenAccountsController">
    <children>
       <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
          <top>
@@ -38,17 +38,20 @@
          <center>
             <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="521.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="scrollAffiliates" layoutX="2.0" layoutY="3.0" prefHeight="273.0" prefWidth="292.0">
+                  <ImageView fx:id="userPicture" fitHeight="69.0" fitWidth="77.0" layoutX="306.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="labelWarning" layoutX="292.0" layoutY="219.0" prefHeight="17.0" prefWidth="233.0" />
+                  <MFXTextField fx:id="folioField" floatMode="DISABLED" layoutX="184.0" layoutY="24.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="100.0" promptText="Ingresa Folio" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="24.0" />
+                  <Button fx:id="folioBtn" layoutX="292.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Ingresar" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="26.0" />
+                  <ScrollPane fx:id="scrollLeft" hbarPolicy="NEVER" layoutX="49.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0">
                      <content>
-                        <VBox fx:id="vboxAffiliates" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="269.0" prefWidth="290.0" />
+                        <VBox fx:id="accountsAvailable" prefHeight="223.0" prefWidth="186.0" />
                      </content>
                   </ScrollPane>
-                  <TextField fx:id="nameField" layoutX="308.0" layoutY="34.0" prefHeight="25.0" prefWidth="151.0" promptText="Nombre " />
-                  <TextField fx:id="ageField" layoutX="308.0" layoutY="66.0" prefHeight="25.0" prefWidth="51.0" promptText="Edad" />
-                  <Button fx:id="takePhotoBtn" layoutX="395.0" layoutY="117.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="77.0" text="Tomar foto" />
-                  <Button fx:id="addBtn" layoutX="311.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Agregar" />
-                  <ImageView fx:id="userPicture" fitHeight="69.0" fitWidth="77.0" layoutX="306.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="labelWarning" layoutX="292.0" layoutY="219.0" prefHeight="25.0" prefWidth="233.0" />
+                  <ScrollPane fx:id="scrollRight" hbarPolicy="NEVER" layoutX="273.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="accountsToOpen" prefHeight="216.0" prefWidth="186.0" />
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </center>

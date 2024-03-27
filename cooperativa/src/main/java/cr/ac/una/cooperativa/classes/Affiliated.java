@@ -14,13 +14,14 @@ public class Affiliated {
     private String name;
     private List<Account> accounts;
     private String information;
-    private Image picture;
+    private String picture;
     private float buzon;
+    
     public Affiliated(){
         name = "";
         accounts = new ArrayList<>();
         information = "";
-        picture = null;
+        picture = "";
         
     }
     
@@ -34,14 +35,14 @@ public class Affiliated {
     
      
    public String getName(){
-       return this.name;
+       return name;
     }
    public void setName(String name){
        this.name = name;
    }
    
    public List<Account> getAccounts(){
-       return this.accounts;
+       return accounts;
    }
    
    public void addAccount(Account cuenta){
@@ -49,15 +50,17 @@ public class Affiliated {
    }
     
    public String getInformation(){
-         return this.information;
+         return information;
    }
     
    public void setInformation(String info){
        this.information = info;
    }
     
-   public Image getImageView(){
-       return this.picture;
+   public String getImage(){
+       return picture;
    }
-    
+   public void setImage(String image){
+       this.picture = image;
+   }
 }

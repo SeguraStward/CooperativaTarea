@@ -10,11 +10,7 @@ public class Account {
     private float money;
     private String description;
     
-    public Account(){
-    name = "";
-    money = 0;
-    description = "";
-    }
+    public Account(){}
     
     public Account(String name, float money,String description){
     this.name = name;
