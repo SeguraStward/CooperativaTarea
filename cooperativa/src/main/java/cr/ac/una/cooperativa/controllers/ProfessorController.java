@@ -50,7 +50,7 @@ public class ProfessorController extends Controller implements Initializable{
     @FXML
     private MFXTextField companyInputName;
     @FXML
-    private MFXButton compBtnImg;
+    private Button compBtnImg;
     @FXML
     private ScrollPane accountScroll;
     @FXML
@@ -72,9 +72,6 @@ public class ProfessorController extends Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
-         mainBorderPane.getStyleClass().add("main-border-pane");
-         companyName.getStyleClass().add("label-estilo");
-         readyBtn.getStyleClass().add("ready-btn");
          companyName.setText(company.getName());
          imageFile = company.getImageFile();
          Image image = new Image(imageFile);
@@ -134,7 +131,8 @@ public class ProfessorController extends Controller implements Initializable{
         newAccount.setName(accountField.getText());        
         company.addAccount(newAccount);
         addAccount(accountField.getText());
-        
+         accountField.clear();
+         accountField.setPromptText("Done");
         }else{
             
         accountField.clear();
@@ -159,11 +157,13 @@ public class ProfessorController extends Controller implements Initializable{
         MFXButton editBtn = new MFXButton();
         deleteBtn.setText("Delete");
         editBtn.setText("Edit");
+        deleteBtn.getStyleClass().add("deleteBtn");
+        editBtn.getStyleClass().add("editBtn");
         HBox accountBox = new HBox(10);
         accountBox.setPrefHeight(15);
         accountBox.setAlignment(Pos.CENTER);
         accountBox.getChildren().addAll(label,editBtn,deleteBtn);
-     
+        accountBox.getStyleClass().add("accountsHbox");
 
         vboxAccounts.getChildren().add(accountBox);
         deleteBtn.setOnAction(e -> {             

@@ -1,55 +1,102 @@
-/* Estilo para el VBox principal donde se muestran las cuentas */
-.vbox-estilo {
-    -fx-background-color: #FFC107; /* Amarillo */
-    -fx-padding: 20px;
-    -fx-spacing: 10px; /* Espacio entre elementos del VBox */
+/* Estilo general del StackPane de fondo */
+#mainPane {
+    -fx-background-color: #f0f0f0; /* Un gris muy claro */
+}
+#mainAnchor{
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #87CEEB 0%, #FFFFFF 100%);
+    -fx-border-width: 1px;
+    -fx-background-radius:0px 0px 15px 15px; 
+    -fx-border-radius:0px 0px 15px 15px;
 }
 
-/* Estilo para el HBox de cada cuenta */
-.hbox-estilo {
-    -fx-background-color: #4CAF50; /* Verde */
-    -fx-padding: 10px;
-    -fx-border-radius: 20px; /* Bordes redondeados para suavizar */
-    -fx-background-radius: 20px; /* Asegura que el fondo también tenga bordes redondeados */
-    -fx-alignment: center-left;
+
+/*#mainBorderPane {
+    -fx-background-color: #ffffff; 
+    -fx-border-color: #cccccc; 
+    -fx-border-width: 1px;
+    -fx-background-radius: 15px; 
+    -fx-border-radius: 15px;
+}
+*/
+
+#head {
+    -fx-border-width: 1px;
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #007FFF 0%, #87CEEB 100%);
+    -fx-background-radius: 15px 15px 0px 0px; 
+    -fx-border-radius: 15px 15px 0px 0px;
 }
 
-/* Estilo general para botones */
-.boton-estilo {
-    -fx-background-color: #2196F3; /* Azul */
-    -fx-text-fill: #FFFFFF; /* Letra blanca */
-    -fx-font-weight: bold;
-    -fx-border-radius: 30px; /* Botones con bordes muy redondeados */
-    -fx-background-radius: 30px;
-    -fx-padding: 5px 20px;
+#companyName {
+    -fx-font-size: 20px; 
+    -fx-font-weight: bold; 
+    -fx-text-fill: white;
+    -fx-font-family:'Comic Sans MS';
 }
 
-/* Efecto hover para botones, los hace más claros al pasar el ratón por encima */
-.boton-estilo:hover {
-    -fx-background-color: #90CAF9;
+/* Estilo para los botones generales */
+.button {
+    -fx-background-color: transparent; 
+    -fx-text-fill:#00BFFF; 
+    -fx-border-width: 0; 
+    -fx-background-radius: 5px; 
+    -fx-font-family:'Comic Sans MS';
 }
 
-/* Estilo para el label del nombre de la empresa */
-.label-estilo {
-    -fx-font-size: 24px; /* Tamaño de letra más grande */
-    -fx-text-fill: #E91E63; /* Color rosa para el texto */
+/* Estilo para botones al pasar el mouse por encima */
+.button:hover {
+    -fx-text-fill: white; 
+    -fx-background-color: #00BFFF;
+}
+/* Estilo para TextField con bordes redondeados */
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px; 
+    -fx-text-fill:#00BFFF;
+    -fx-prompt-text-fill: lightBlue;
 }
 
-/* Estilo para el fondo de la aplicación */
-.main-border-pane {
-    -fx-background-color: #FFF59D; /* Un amarillo claro para el fondo */
+/* Estilo para botones de eliminar */
+.deleteBtn {
+    -fx-background-color: #FFC0CB; /* Rosa */
+    -fx-text-fill: white;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
 }
 
-/* Estilo para el botón de 'Listo' */
-.ready-btn {
-    -fx-background-color: #F44336; /* Rojo */
-    -fx-text-fill: #FFFFFF; /* Letra blanca */
-    -fx-font-weight: bold;
-    -fx-border-radius: 20px; /* Bordes redondeados */
-    -fx-background-radius: 20px;
-    -fx-padding: 10px 30px;
+/* Estilo para botones de editar */
+.editBtn {
+    -fx-background-color: #ADD8E6; /* Celeste */
+    -fx-text-fill: white;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
 }
 
-.ready-btn:hover {
-    -fx-background-color: #EF9A9A; /* Rojo claro */
+/* Cambia el color al hacer hover sobre botones de eliminar */
+.deleteBtn:hover {
+    -fx-background-color: #FFA07A; /* Rosa más intenso para el hover */
+}
+
+/* Cambia el color al hacer hover sobre botones de editar */
+.editBtn:hover {
+    -fx-background-color: #00BFFF; /* Celeste más intenso para el hover */
+}
+#compBtnImg{
+     -fx-text-fill: white; 
+    -fx-background-color: transparent;
+}
+
+#compBtnImg:hover {
+    -fx-text-fill: #00BFFF; 
+    -fx-background-color: white;
+}
+.accountsHbox {
+    -fx-background-color: #B3E5FC; /* Un celeste más suave */
+    -fx-padding: 8px;
+}
+
+#accountScroll{ 
+   
+     -fx-border-width: 0;
+    -fx-background-color: transparent;
 }
