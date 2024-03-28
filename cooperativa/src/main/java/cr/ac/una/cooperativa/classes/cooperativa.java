@@ -1,29 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.cooperativa.classes;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.image.Image;
 
-
-
-public class cooperativa {
+public class Cooperativa {
     private String name;
-    private Image image;
+    private String imageFile;
     private List<Account> accounts;
     private List<Affiliated> affiliates;
     
     
-    public cooperativa(){
+     public Cooperativa(){
         name = "";
-        image = null;
+        imageFile = "";
         accounts = new ArrayList<>();
         affiliates = new ArrayList<>();
-
-    }
+     }
     
     public Account getAccount(int index){
         return accounts.get(index);
@@ -42,18 +34,18 @@ public class cooperativa {
     }
     
     public String getName(){
-        return name;
+        return this.name;
     }
     public void setName(String name){
         this.name = name;
     }
 
-    public Image getImage() {
-        return image;
+    public String getImageFile() {
+        return imageFile;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImageFile(String image) {
+        this.imageFile = image;
     }
 
     public List<Account> getAccounts() {

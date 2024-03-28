@@ -4,12 +4,16 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
+import cr.ac.una.cooperativa.util.FlowController;
+import cr.ac.una.cooperativa.util.AppContext;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -21,14 +25,13 @@ import javafx.scene.layout.StackPane;
  *
  * @author stwar
  */
-public class MainWindowController implements Initializable {
+public class MainWindowController extends Controller implements Initializable {
+    
 
     @FXML
     private BorderPane mainBorderPane;
     @FXML
     private ImageView companyImage;
-    @FXML
-    private Label compayLabel;
     @FXML
     private AnchorPane mainAnchor;
     @FXML
@@ -43,8 +46,9 @@ public class MainWindowController implements Initializable {
     private HBox head;
     @FXML
     private HBox selectionHbox;
+   
     @FXML
-    private Label companyLabel;
+    private Label companyName;
 
     /**
      * Initializes the controller class.
@@ -53,9 +57,15 @@ public class MainWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       companyImage.setImage((Image)AppContext.getInstance().get("companyImage"));
+       companyName.setText((String) AppContext.getInstance().get("companyName"));
     }    
-
+    
+    @Override
+    public void initialize() {
+        
+    }
+    
     public ImageView getCompanyImage() {
         return companyImage;
     }
@@ -65,11 +75,16 @@ public class MainWindowController implements Initializable {
     }
 
     public Label getCompayLabel() {
-        return compayLabel;
+        return companyName;
     }
 
     public void setCompayLabel(Label compayLabel) {
-        this.compayLabel = compayLabel;
+        this.companyName = compayLabel;
     }
-    
+
+   
+     @FXML
+    private void onActionBtnFunctionary(ActionEvent event){
+         FlowController.getInstance().goView("functionaryWindow");
+    }
 }

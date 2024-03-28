@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.cooperativa.controllers;
 
 import java.net.URL;
@@ -22,7 +18,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author stward segura
  */
-public class CarnetPrintingController implements Initializable {
+public class CarnetPrintingController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -52,5 +48,9 @@ public class CarnetPrintingController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+    }
     
 }

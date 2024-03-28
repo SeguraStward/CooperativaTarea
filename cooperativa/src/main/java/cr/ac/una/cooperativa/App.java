@@ -1,9 +1,12 @@
 package cr.ac.una.cooperativa;
 
+
+import cr.ac.una.cooperativa.util.AppContext;
+import cr.ac.una.cooperativa.classes.Cooperativa;
+import cr.ac.una.cooperativa.classes.Json;
+import cr.ac.una.cooperativa.util.FlowController;
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,34 +16,19 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("affiliatedWindow"), 640, 480);
-        stage.setScene(scene);
-        scene.getStylesheets().add(getClass().
-                getResource("/styles/mainWindow.css").toExternalForm());
-                
-        stage.show();
-     
+       
+       Cooperativa company = Json.cargar("jsonFile.json");     
+       AppContext.getInstance().set("Cooperativa",company);
+       FlowController.getInstance().InitializeFlow(stage, null);
+       FlowController.getInstance().goView("functionaryWindow");
 
-    }
-   public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-   
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-    
-    public static void setCss(String css){
-        
     }
     
     public static void main(String[] args) {
         launch();
     }
-
 
 }

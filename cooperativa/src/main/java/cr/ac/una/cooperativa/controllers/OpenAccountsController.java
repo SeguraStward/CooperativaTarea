@@ -4,14 +4,15 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -24,7 +25,7 @@ import javafx.scene.layout.VBox;
  *
  * @author stward segura
  */
-public class FunctionaryMaintenanceController extends Controller implements Initializable {
+public class OpenAccountsController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -39,21 +40,23 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private TextField nameField;
-    @FXML
-    private TextField ageField;
-    @FXML
-    private Button takePhotoBtn;
-    @FXML
-    private Button addBtn;
-    @FXML
     private ImageView userPicture;
     @FXML
-    private ScrollPane scrollAffiliates;
-    @FXML
-    private VBox vboxAffiliates;
-    @FXML
     private Label labelWarning;
+    @FXML
+    private MFXTextField folioField;
+    @FXML
+    private Button folioBtn;
+    @FXML
+    private ScrollPane scrollLeft;
+    @FXML
+    private VBox accountsAvailable;
+    @FXML
+    private ScrollPane scrollRight;
+    @FXML
+    private VBox accountsToOpen;
+    @FXML
+    private Button backBtn;
 
     /**
      * Initializes the controller class.
@@ -67,6 +70,10 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
     @Override
     public void initialize() {
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
     }
     
 }
