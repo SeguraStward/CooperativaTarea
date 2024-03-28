@@ -1,10 +1,10 @@
 package cr.ac.una.cooperativa;
 
 
-import cr.ac.una.cooperativa.classes.AppContext;
+import cr.ac.una.cooperativa.util.AppContext;
 import cr.ac.una.cooperativa.classes.Cooperativa;
 import cr.ac.una.cooperativa.classes.Json;
-import cr.ac.una.cooperativa.controllers.FlowController;
+import cr.ac.una.cooperativa.util.FlowController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,7 +23,7 @@ public class App extends Application {
        Cooperativa company = Json.cargar("jsonFile.json");     
        AppContext.getInstance().set("Cooperativa",company);
        FlowController.getInstance().InitializeFlow(stage, null);
-       FlowController.getInstance().goView("professorWindow");
+       FlowController.getInstance().goView("functionaryWindow");
 
     }
     

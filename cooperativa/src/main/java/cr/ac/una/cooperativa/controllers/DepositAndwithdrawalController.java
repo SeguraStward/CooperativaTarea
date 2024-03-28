@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author stward segura
  */
-public class DepositAndwithdrawalController implements Initializable {
+public class DepositAndwithdrawalController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -24,5 +24,9 @@ public class DepositAndwithdrawalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+    }
     
 }

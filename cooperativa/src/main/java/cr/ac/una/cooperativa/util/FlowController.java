@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cr.ac.una.cooperativa.controllers;
+package cr.ac.una.cooperativa.util;
 
 
 import cr.ac.una.cooperativa.App;
+import cr.ac.una.cooperativa.controllers.Controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;

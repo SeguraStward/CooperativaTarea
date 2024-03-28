@@ -4,7 +4,8 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
-import cr.ac.una.cooperativa.classes.AppContext;
+import cr.ac.una.cooperativa.util.FlowController;
+import cr.ac.una.cooperativa.util.AppContext;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;

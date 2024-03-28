@@ -5,7 +5,7 @@
 package cr.ac.una.cooperativa.controllers;
 
 import cr.ac.una.cooperativa.classes.Account;
-import cr.ac.una.cooperativa.classes.AppContext;
+import cr.ac.una.cooperativa.util.AppContext;
 import cr.ac.una.cooperativa.classes.Cooperativa;
 import cr.ac.una.cooperativa.classes.Json;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -208,9 +208,7 @@ public class ProfessorController extends Controller implements Initializable{
     });
    
   
-    vbox.getChildren().addAll(new Label("Introduce el nuevo nombre de la cuenta:"), textField, confirmButton);
-
-    
+    vbox.getChildren().addAll(new Label("Introduce el nuevo nombre de la cuenta:"), textField, confirmButton); 
     Scene scene = new Scene(vbox, 300, 150);
     stage.setScene(scene);
     stage.showAndWait();

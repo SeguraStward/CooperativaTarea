@@ -7,6 +7,7 @@ package cr.ac.una.cooperativa.controllers;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ import javafx.scene.layout.VBox;
  *
  * @author stward segura
  */
-public class OpenAccountsController implements Initializable {
+public class OpenAccountsController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -54,6 +55,8 @@ public class OpenAccountsController implements Initializable {
     private ScrollPane scrollRight;
     @FXML
     private VBox accountsToOpen;
+    @FXML
+    private Button backBtn;
 
     /**
      * Initializes the controller class.
@@ -64,5 +67,13 @@ public class OpenAccountsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+    }
     
 }

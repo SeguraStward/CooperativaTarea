@@ -10,19 +10,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
  * @author stward segura
  */
-public class FunctionaryMaintenanceController implements Initializable {
+public class FunctionaryMaintenanceController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -46,6 +48,12 @@ public class FunctionaryMaintenanceController implements Initializable {
     private Button addBtn;
     @FXML
     private ImageView userPicture;
+    @FXML
+    private ScrollPane scrollAffiliates;
+    @FXML
+    private VBox vboxAffiliates;
+    @FXML
+    private Label labelWarning;
 
     /**
      * Initializes the controller class.
@@ -56,5 +64,9 @@ public class FunctionaryMaintenanceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+    }
     
 }
