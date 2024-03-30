@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 
 public class Camera {
-     public void captureImage(String filePath) {
+     public void captureImage(String file) {
         // Obtiene la cámara web predeterminada
         Webcam webcam = Webcam.getDefault();
         if (webcam != null) {
@@ -20,15 +20,15 @@ public class Camera {
 
             // Guarda la imagen en el disco
             try {
-                ImageIO.write(image, "PNG", new File(filePath));
-                System.out.println("Imagen guardada.");
+                ImageIO.write(image, "PNG", new File(file));
+                System.out.println("Imagen guardada");
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             webcam.close();
         } else {
-            System.out.println("No se encontró ninguna webcam.");
+            System.out.println("No se encontro ninguna webcam");
         }
     }
 }

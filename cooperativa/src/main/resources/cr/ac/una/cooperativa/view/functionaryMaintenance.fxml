@@ -45,7 +45,7 @@
                   </ScrollPane>
                   <TextField fx:id="nameField" layoutX="308.0" layoutY="34.0" prefHeight="25.0" prefWidth="151.0" promptText="Nombre " />
                   <TextField fx:id="ageField" layoutX="308.0" layoutY="66.0" prefHeight="25.0" prefWidth="51.0" promptText="Edad" />
-                  <Button fx:id="takePhotoBtn" layoutX="395.0" layoutY="117.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="129.0" text="Take Picture" />
+                  <Button fx:id="takePhotoBtn" layoutX="395.0" layoutY="117.0" mnemonicParsing="false" onAction="#takePicture" prefHeight="33.0" prefWidth="90.0" text="Take Picture" />
                   <Button fx:id="addBtn" layoutX="311.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Add" />
                   <ImageView fx:id="userPicture" fitHeight="69.0" fitWidth="77.0" layoutX="306.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="labelWarning" layoutX="292.0" layoutY="219.0" prefHeight="25.0" prefWidth="233.0" />

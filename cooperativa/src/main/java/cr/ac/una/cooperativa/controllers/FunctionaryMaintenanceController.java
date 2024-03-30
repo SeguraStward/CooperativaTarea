@@ -4,8 +4,10 @@
  */
 package cr.ac.una.cooperativa.controllers;
 
+import cr.ac.una.cooperativa.util.Camera;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -67,6 +69,12 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
     @Override
     public void initialize() {
+    }
+
+    @FXML
+    private void takePicture(ActionEvent event) {
+        Camera camara = new Camera();
+        camara.captureImage("C:/Users/stwar/Documents/Proyectos java/cooperativa");
     }
     
 }
