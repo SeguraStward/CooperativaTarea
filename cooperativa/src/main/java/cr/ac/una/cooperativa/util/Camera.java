@@ -8,7 +8,15 @@ import javax.imageio.ImageIO;
 
 
 public class Camera {
-     public void captureImage(String file) {
+     public void captureImage() {
+         String userHome = System.getProperty("user.home");
+         String separator = System.getProperty("file.separator");
+         String directoryPath = userHome + separator + "misRecursos";
+         File directory = new File(directoryPath);
+         if (!directory.exists()) {
+              directory.mkdirs(); // Crea el directorio si no existe
+         }
+        
         // Obtiene la cámara web predeterminada
         Webcam webcam = Webcam.getDefault();
         if (webcam != null) {
@@ -20,7 +28,7 @@ public class Camera {
 
             // Guarda la imagen en el disco
             try {
-                ImageIO.write(image, "PNG", new File(file));
+                ImageIO.write(image, "PNG", new File(directoryPath));
                 System.out.println("Imagen guardada");
             } catch (IOException e) {
                 e.printStackTrace();
