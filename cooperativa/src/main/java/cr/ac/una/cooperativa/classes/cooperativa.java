@@ -29,7 +29,7 @@ public class Cooperativa {
         return affiliates.get(index);
     }
     
-    public void addAccount(Affiliated affiliate){
+    public void addAffiliated(Affiliated affiliate){
            affiliates.add(affiliate);
     }
     
