@@ -3,14 +3,14 @@ package cr.ac.una.cooperativa.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cooperativa {
+public class cooperativa {
     private String name;
     private String imageFile;
     private List<Account> accounts;
     private List<Affiliated> affiliates;
     
     
-     public Cooperativa(){
+     public cooperativa(){
         name = "C:\\Users\\stwar\\Documents\\Proyectos java\\cooperativa\\cooperativa";
         imageFile = "";
         accounts = new ArrayList<>();

@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package cr.ac.una.cooperativa.controllers;
 
 import cr.ac.una.cooperativa.classes.Account;
 import cr.ac.una.cooperativa.classes.Affiliated;
 import cr.ac.una.cooperativa.classes.Cooperativa;
 import cr.ac.una.cooperativa.util.AppContext;
-import cr.ac.una.cooperativa.util.Camera;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.image.BufferedImage;
 import java.io.File;
