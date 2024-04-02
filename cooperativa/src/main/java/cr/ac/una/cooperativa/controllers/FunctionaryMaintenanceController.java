@@ -74,7 +74,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     @FXML
     private void takePicture(ActionEvent event) {
         Camera camara = new Camera();
-        camara.captureImage("C:/Users/stwar/Documents/Proyectos java/cooperativa");
+        camara.captureImage();
     }
     
 }

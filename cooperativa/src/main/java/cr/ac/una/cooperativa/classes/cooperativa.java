@@ -11,7 +11,7 @@ public class Cooperativa {
     
     
      public Cooperativa(){
-        name = "";
+        name = "C:\\Users\\stwar\\Documents\\Proyectos java\\cooperativa\\cooperativa";
         imageFile = "";
         accounts = new ArrayList<>();
         affiliates = new ArrayList<>();
