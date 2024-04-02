@@ -12,28 +12,43 @@ import javafx.scene.image.ImageView;
 
 public class Affiliated {
     private String name;
+    private int age;
     private List<Account> accounts;
-    private String information;
     private String picture;
     private float buzon;
+
     
-    public Affiliated(){
+    
+     public Affiliated(){
         name = "";
         accounts = new ArrayList<>();
-        information = "";
         picture = "";
-        
+        age = 0;
     }
     
-    public Affiliated(String name, String information){
+    public Affiliated(String name, int age){
         this.name = name;
         this.accounts = new ArrayList<>();
-        this.information = information;
         this.picture = null;
+        this.age = age;
     }
     
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public float getBuzon() {
+        return buzon;
+    }
+
+    public void setBuzon(float buzon) {
+        this.buzon = buzon;
+    }
     
-     
    public String getName(){
        return name;
     }
@@ -49,18 +64,12 @@ public class Affiliated {
         accounts.add(cuenta);   
    }
     
-   public String getInformation(){
-         return information;
-   }
-    
-   public void setInformation(String info){
-       this.information = info;
-   }
-    
-   public String getImage(){
+   public String getPicture(){
        return picture;
    }
-   public void setImage(String image){
+   public void setPicture(String image){
        this.picture = image;
    }
+   
+   
 }

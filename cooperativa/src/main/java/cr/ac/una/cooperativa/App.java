@@ -24,7 +24,8 @@ public class App extends Application {
        AppContext.getInstance().set("Cooperativa",company);
        FlowController.getInstance().InitializeFlow(stage, null);
        FlowController.getInstance().goView("functionaryMaintenance");
-
+       FlowController.getInstance().goViewInWindow("cameraView");
+       FlowController.getInstance().limpiarLoader("cameraView");
     }
     
     public static void main(String[] args) {
