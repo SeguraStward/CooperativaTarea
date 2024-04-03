@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package cr.ac.una.cooperativa.controllers;
 
 import cr.ac.una.cooperativa.classes.Account;
 import cr.ac.una.cooperativa.classes.Affiliated;
 import cr.ac.una.cooperativa.classes.Cooperativa;
 import cr.ac.una.cooperativa.util.AppContext;
-import cr.ac.una.cooperativa.util.Camera;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -114,6 +110,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         imagesDirectory = locatingImg;
    }
     @FXML
+
     private void takePicture(ActionEvent event){
         try{
             openCamera();
@@ -202,6 +199,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
       Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
        List<Affiliated> affiliates = company.getAffiliates();
        affiliates.removeIf(a -> a.getName().equals(name));   
+
     }
     
     private void editWindow(Label label) {
