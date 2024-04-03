@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package cr.ac.una.cooperativa.controllers;
 
 import com.github.sarxos.webcam.Webcam;
@@ -37,7 +34,7 @@ public class CameraController extends Controller implements Initializable {
      */
     private Webcam webcam;
     private volatile boolean stopCamera = false;
-    private BufferedImage takenPhoto;
+    private static BufferedImage takenPhoto;
     @FXML
     private ImageView preview;
     @FXML
@@ -47,7 +44,7 @@ public class CameraController extends Controller implements Initializable {
     @FXML
     private Button readyBtn;
     private boolean stopAll;
-    private Stage cameraStage;
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         start();
@@ -103,15 +100,13 @@ public class CameraController extends Controller implements Initializable {
     public void stopCamera() {
         stopCamera = true;     
         webcam.close();
-        cameraStage.close();
+       
     }
-    public BufferedImage getImage(){
+    public static BufferedImage getImage(){
         return takenPhoto;
     }
     
-    public void setStage(Stage stage){ 
-        cameraStage = stage;            
-    }
+  
     @Override
     public void initialize() {
     }
