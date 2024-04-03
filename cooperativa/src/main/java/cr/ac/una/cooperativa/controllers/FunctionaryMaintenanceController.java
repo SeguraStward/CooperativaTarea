@@ -92,7 +92,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     }
    public void openCamera() throws IOException{
        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("cameraView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cameraView.fxml"));
         Parent root = loader.load();
         
         camera = loader.getController();
