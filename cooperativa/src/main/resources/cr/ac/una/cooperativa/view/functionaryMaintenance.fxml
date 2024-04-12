@@ -44,14 +44,15 @@
                      </content>
                   </ScrollPane>
                   <TextField fx:id="nameField" layoutX="415.0" layoutY="82.0" prefHeight="25.0" prefWidth="66.0" promptText="Nombre " />
-                  <TextField fx:id="ageField" layoutX="491.0" layoutY="82.0" prefHeight="25.0" prefWidth="51.0" promptText="Edad" />
-                  <Button fx:id="chooseImg" layoutX="434.0" layoutY="198.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="33.0" prefWidth="87.0" text="Select Image" />
-                  <Button fx:id="addBtn" layoutX="460.0" layoutY="243.0" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="45.0" text="Add" />
-                  <ImageView fx:id="userPicture" fitHeight="68.0" fitWidth="86.0" layoutX="434.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="ageField" layoutX="415.0" layoutY="116.0" prefHeight="25.0" prefWidth="44.0" promptText="Edad" />
+                  <Button fx:id="chooseImg" layoutX="438.0" layoutY="230.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="33.0" prefWidth="87.0" text="Select Image" />
+                  <Button fx:id="addBtn" layoutX="455.0" layoutY="263.0" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="45.0" text="Add" />
+                  <ImageView fx:id="userPicture" fitHeight="68.0" fitWidth="86.0" layoutX="438.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
                   <VBox fx:id="boxAffFolio" alignment="CENTER" layoutX="7.0" layoutY="31.0" prefHeight="46.0" prefWidth="392.0" />
                   <TextField fx:id="search" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="100.0" promptText="Buscar Folio" />
                   <Button fx:id="searchBtn" layoutX="114.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="75.0" text="buscar" />
                   <Button fx:id="readyBtn" layoutX="495.0" layoutY="2.0" mnemonicParsing="false" onAction="#readyAction" prefHeight="25.0" prefWidth="52.0" text="Ready" />
+                  <TextField fx:id="lastNameField" layoutX="493.0" layoutY="82.0" prefHeight="25.0" prefWidth="68.0" promptText="Apellido" />
                </children>
             </AnchorPane>
          </center>

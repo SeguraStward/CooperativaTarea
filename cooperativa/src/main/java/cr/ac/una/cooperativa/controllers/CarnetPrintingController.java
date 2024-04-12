@@ -60,7 +60,7 @@ public class CarnetPrintingController extends Controller implements Initializabl
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
 
     @Override
@@ -72,7 +72,7 @@ public class CarnetPrintingController extends Controller implements Initializabl
      if(getAccountToPrint()){
       try {
        
-        String destino = "Recursos/"+ asociado.getName()+".pdf";
+        String destino = super.path + asociado.getName()+".pdf";
         // Inicializar PDF writer y document
         PdfWriter writer = new PdfWriter(destino);
         PdfDocument pdf = new PdfDocument(writer);

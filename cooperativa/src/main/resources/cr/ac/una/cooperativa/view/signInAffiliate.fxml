@@ -41,9 +41,10 @@
                         <TextField fx:id="nameField" prefHeight="25.0" prefWidth="173.0" promptText="Nombre " />
                         <TextField fx:id="lastNameField" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="173.0" promptText="Apellido" />
                         <TextField fx:id="ageField" prefHeight="25.0" prefWidth="173.0" promptText="Edad" />
-                        <Button fx:id="captureImgBtn" mnemonicParsing="false" onAction="#captureImgAction" prefHeight="25.0" prefWidth="173.0" text="Capturar Foto" />
-                        <Button fx:id="deleteImgBtn" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" onAction="#deleteImgAction" prefHeight="25.0" prefWidth="173.0" text="Eliminar" />
-                        <Button fx:id="showFolio" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#showFolioAction" prefHeight="25.0" prefWidth="173.0" text="Mostrar folio" />
+                        <Button fx:id="captureImgBtn" mnemonicParsing="false" onAction="#captureImgAction" prefHeight="25.0" prefWidth="173.0" text="Capturar/Empezar webcam" />
+                        <Button fx:id="deleteImgBtn" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" onAction="#deleteImgAction" prefHeight="25.0" prefWidth="173.0" text="Eliminar " />
+                        <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="173.0" text="Guardar todo" />
+                        <Button fx:id="exitBtn" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#exitBtnAction" prefHeight="25.0" prefWidth="173.0" text="Salir" />
                         <HBox prefHeight="34.0" prefWidth="171.0">
                            <children>
                               <Label prefHeight="32.0" prefWidth="47.0" text="Folio: ">
@@ -58,7 +59,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="173.0" text="Guardar todo" />
+                        <Label fx:id="guideLabel" prefHeight="32.0" prefWidth="171.0" />
                      </children>
                   </VBox>
                   <ImageView fx:id="userPicture" fitHeight="283.0" fitWidth="278.0" pickOnBounds="true" HBox.hgrow="ALWAYS" />
