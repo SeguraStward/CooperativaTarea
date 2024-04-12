@@ -15,16 +15,16 @@
 
 <StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryMaintenanceController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="398.0" prefWidth="617.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="96.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="96.0" prefWidth="599.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="companyLabel" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
+                  <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -36,19 +36,22 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="288.0" prefWidth="525.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="313.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="scrollAffiliates" layoutX="2.0" layoutY="3.0" prefHeight="273.0" prefWidth="292.0">
+                  <ScrollPane fx:id="scrollAffiliates" hbarPolicy="NEVER" layoutX="4.0" layoutY="82.0" prefHeight="219.0" prefWidth="397.0">
                      <content>
-                        <VBox fx:id="vboxAffiliates" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="269.0" prefWidth="290.0" />
+                        <VBox fx:id="vboxAffiliates" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="216.0" prefWidth="397.0" />
                      </content>
                   </ScrollPane>
-                  <TextField fx:id="nameField" layoutX="308.0" layoutY="34.0" prefHeight="25.0" prefWidth="151.0" promptText="Nombre " />
-                  <TextField fx:id="ageField" layoutX="308.0" layoutY="66.0" prefHeight="25.0" prefWidth="51.0" promptText="Edad" />
-                  <Button fx:id="takePhotoBtn" layoutX="395.0" layoutY="117.0" mnemonicParsing="false" onAction="#takePicture" prefHeight="33.0" prefWidth="90.0" text="Take Picture" />
-                  <Button fx:id="addBtn" layoutX="311.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Add" />
-                  <ImageView fx:id="userPicture" fitHeight="69.0" fitWidth="77.0" layoutX="306.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="labelWarning" layoutX="292.0" layoutY="219.0" prefHeight="25.0" prefWidth="233.0" />
+                  <TextField fx:id="nameField" layoutX="415.0" layoutY="82.0" prefHeight="25.0" prefWidth="66.0" promptText="Nombre " />
+                  <TextField fx:id="ageField" layoutX="491.0" layoutY="82.0" prefHeight="25.0" prefWidth="51.0" promptText="Edad" />
+                  <Button fx:id="chooseImg" layoutX="434.0" layoutY="198.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="33.0" prefWidth="87.0" text="Select Image" />
+                  <Button fx:id="addBtn" layoutX="460.0" layoutY="243.0" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="45.0" text="Add" />
+                  <ImageView fx:id="userPicture" fitHeight="68.0" fitWidth="86.0" layoutX="434.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+                  <VBox fx:id="boxAffFolio" alignment="CENTER" layoutX="7.0" layoutY="31.0" prefHeight="46.0" prefWidth="392.0" />
+                  <TextField fx:id="search" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="100.0" promptText="Buscar Folio" />
+                  <Button fx:id="searchBtn" layoutX="114.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="75.0" text="buscar" />
+                  <Button fx:id="readyBtn" layoutX="495.0" layoutY="2.0" mnemonicParsing="false" onAction="#readyAction" prefHeight="25.0" prefWidth="52.0" text="Ready" />
                </children>
             </AnchorPane>
          </center>

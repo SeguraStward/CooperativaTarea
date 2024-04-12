@@ -204,8 +204,8 @@ public class ProfessorController extends Controller implements Initializable{
         stage.close();
     });
    
-  
-    vbox.getChildren().addAll(new Label("Introduce el nuevo nombre de la cuenta:"), textField, confirmButton); 
+    Label label2 = new Label("Introduce el nuevo nombre de la cuenta:");
+    vbox.getChildren().addAll(label2, textField, confirmButton); 
     Scene scene = new Scene(vbox, 300, 150);
     stage.setScene(scene);
     stage.showAndWait();

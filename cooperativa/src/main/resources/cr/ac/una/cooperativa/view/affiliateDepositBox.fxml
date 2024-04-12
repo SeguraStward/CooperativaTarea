@@ -23,7 +23,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="companyLabel" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
+                  <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -34,26 +34,27 @@
                </BorderPane.margin>
             </HBox>
          </top>
-         <left>
+         <center>
             <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="452.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="folioField" layoutX="167.0" layoutY="23.0" prefHeight="25.0" prefWidth="118.0" promptText="Ingrese su folio" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="23.0" />
-                  <ChoiceBox fx:id="billeteChoiceBox" layoutX="90.0" layoutY="67.0" prefHeight="25.0" prefWidth="35.0" />
-                  <Label fx:id="label" layoutX="130.0" layoutY="69.0" prefHeight="22.0" prefWidth="99.0" text="000 mil colones" AnchorPane.bottomAnchor="186.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="69.0" />
-                  <ChoiceBox fx:id="monedaChoiceBox" layoutX="231.0" layoutY="67.0" prefHeight="25.0" prefWidth="36.0" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="67.0" />
-                  <Label fx:id="label" layoutX="274.0" layoutY="69.0" prefHeight="22.0" prefWidth="70.0" text="Colones" />
-                  <ChoiceBox fx:id="amountOfBillete" layoutX="90.0" layoutY="103.0" prefHeight="25.0" prefWidth="35.0" AnchorPane.bottomAnchor="149.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="103.0" />
+                  <TextField fx:id="folioField" layoutX="131.0" layoutY="23.0" prefHeight="25.0" prefWidth="118.0" promptText="Ingrese su folio" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="203.0" AnchorPane.topAnchor="23.0" />
+                  <ChoiceBox fx:id="billeteCBox" layoutX="90.0" layoutY="67.0" prefHeight="25.0" prefWidth="35.0" />
+                  <Label fx:id="label" layoutX="130.0" layoutY="69.0" prefHeight="22.0" prefWidth="99.0" text=" Billetes" AnchorPane.bottomAnchor="186.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="69.0" />
+                  <ChoiceBox fx:id="monedaCBox" layoutX="231.0" layoutY="67.0" prefHeight="25.0" prefWidth="36.0" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="67.0" />
+                  <Label fx:id="label" layoutX="274.0" layoutY="69.0" prefHeight="22.0" prefWidth="70.0" text="Monedas" />
                   <Label fx:id="label" layoutX="135.0" layoutY="104.0" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
-                  <ChoiceBox fx:id="amountOfMoneda" layoutX="232.0" layoutY="103.0" prefHeight="25.0" prefWidth="35.0" AnchorPane.bottomAnchor="149.0" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="103.0" />
                   <Label fx:id="label" layoutX="274.0" layoutY="104.0" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
-                  <Button fx:id="depositBtn" layoutX="145.0" layoutY="206.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Depositar a tu buzón" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="206.0" />
+                  <Button fx:id="depositBtn" layoutX="145.0" layoutY="206.0" mnemonicParsing="false" onAction="#depositAction" prefHeight="25.0" prefWidth="148.0" text="Depositar a tu buzón" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="206.0" />
                   <Label fx:id="labelWarning" alignment="CENTER" layoutX="75.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="29.0" prefWidth="296.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="154.0" />
+                  <Button fx:id="search" layoutX="249.0" layoutY="23.0" mnemonicParsing="false" onAction="#searchAccount" text="Buscar" />
+                  <TextField fx:id="numOfBillete" layoutX="91.0" layoutY="103.0" prefHeight="25.0" prefWidth="34.0" />
+                  <TextField fx:id="numOfMoneda" layoutX="232.0" layoutY="103.0" prefHeight="25.0" prefWidth="34.0" />
                </children>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
             </AnchorPane>
-         </left>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

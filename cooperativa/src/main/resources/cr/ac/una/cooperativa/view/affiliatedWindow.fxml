@@ -21,7 +21,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="companyLabel" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
+                  <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -37,9 +37,9 @@
                <children>
                   <HBox fx:id="selectionHbox" alignment="CENTER" layoutY="3.0" prefHeight="217.0" prefWidth="449.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <MFXButton fx:id="registrarseBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="80.0" prefWidth="88.0" text="Registrarse" />
-                        <MFXButton fx:id="consultaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="Consulta" />
-                        <MFXButton fx:id="buzonBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" prefHeight="80.0" prefWidth="88.0" text="buzón" HBox.hgrow="ALWAYS" />
+                        <MFXButton fx:id="registrarseBtn" buttonType="RAISED" depthLevel="LEVEL3" onAction="#goRegister" prefHeight="80.0" prefWidth="88.0" text="Registrarse" />
+                        <MFXButton fx:id="consultaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" onAction="#goStatementInquiry" prefHeight="80.0" prefWidth="88.0" text="Consulta" />
+                        <MFXButton fx:id="buzonBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" onAction="#goBuzon" prefHeight="80.0" prefWidth="88.0" text="buzón" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

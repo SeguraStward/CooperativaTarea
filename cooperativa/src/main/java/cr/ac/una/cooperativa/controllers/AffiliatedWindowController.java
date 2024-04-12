@@ -1,7 +1,10 @@
 package cr.ac.una.cooperativa.controllers;
 
+import cr.ac.una.cooperativa.util.FlowController;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +22,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author stward segura
  */
-public class AffiliatedWindowController implements Initializable {
+public class AffiliatedWindowController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -32,32 +35,44 @@ public class AffiliatedWindowController implements Initializable {
     @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private Label companyLabel;
+    private HBox selectionHbox;
     @FXML
-    private Label label;
+    private MFXButton registrarseBtn;
     @FXML
-    private Label labelWarning;
+    private MFXButton consultaBtn;
     @FXML
-    private TextField folioField;
+    private MFXButton buzonBtn;
     @FXML
-    private ChoiceBox<?> billeteChoiceBox;
-    @FXML
-    private ChoiceBox<?> monedaChoiceBox;
-    @FXML
-    private ChoiceBox<?> amountOfBillete;
-    @FXML
-    private ChoiceBox<?> amountOfMoneda;
-    @FXML
-    private Button depositBtn;
+    private Label companyName;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        super.load();
+    }
+
+    @FXML
+    private void goRegister(ActionEvent event) {
+        FlowController.getInstance().goView("signInAffiliate");
+    }
+
+    @FXML
+    private void goStatementInquiry(ActionEvent event) {
+        FlowController.getInstance().goView("accountStatementInquiry");
+    }
+
+    @FXML
+    private void goBuzon(ActionEvent event) {
+        FlowController.getInstance().goView("affiliateDepositBox");
+    }
+
+    @Override
+    public void initialize() {
+    }
+
 }

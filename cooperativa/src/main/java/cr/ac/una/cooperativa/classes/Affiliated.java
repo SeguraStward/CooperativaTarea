@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cr.ac.una.cooperativa.classes;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 
 public class Affiliated {
@@ -15,8 +10,16 @@ public class Affiliated {
     private int age;
     private List<Account> accounts;
     private String picture;
-    private float buzon;
+    private int buzon;
+    private String folio;
 
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
     
     
      public Affiliated(){
@@ -41,11 +44,11 @@ public class Affiliated {
         this.age = age;
     }
 
-    public float getBuzon() {
+    public int getBuzon() {
         return buzon;
     }
 
-    public void setBuzon(float buzon) {
+    public void setBuzon(int buzon) {
         this.buzon = buzon;
     }
     

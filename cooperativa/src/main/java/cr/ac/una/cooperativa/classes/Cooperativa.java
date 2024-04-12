@@ -64,4 +64,13 @@ public class Cooperativa {
         this.affiliates = affiliates;
     }
     
+    public void assignFolio(Affiliated asociado){
+        Integer num = 0;
+        for(Affiliated affiliado : affiliates){
+            num++;
+            if(affiliado.getName().equals(asociado.getName())){
+                asociado.setFolio(asociado.getName().substring(0, 3) + num.toString());
+            }
+        }
+    }
  }

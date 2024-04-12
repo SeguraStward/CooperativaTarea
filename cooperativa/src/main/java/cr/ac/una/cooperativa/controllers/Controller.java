@@ -1,18 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.cooperativa.controllers;
 
-
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import cr.ac.una.cooperativa.classes.Account;
+import cr.ac.una.cooperativa.classes.Affiliated;
+import cr.ac.una.cooperativa.classes.Cooperativa;
+import cr.ac.una.cooperativa.classes.Json;
+import cr.ac.una.cooperativa.util.AppContext;
+import java.util.List;
 import javafx.fxml.FXML;
-import javafx.scene.control.Control;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public abstract class Controller {
@@ -22,6 +19,9 @@ public abstract class Controller {
     private String nombreVista;
     @FXML
     protected ImageView companyImage;
+    @FXML
+    protected Label companyName;
+
     public String getAccion() {
         return accion;
     }
@@ -46,10 +46,32 @@ public abstract class Controller {
         this.nombreVista = nombreVista;
     }
 
-    public void sendTabEvent(KeyEvent event) {
-        event.consume();
-        KeyEvent keyEvent = new KeyEvent(KeyEvent.KEY_PRESSED, null, null, KeyCode.TAB, false, false, false, false);
-        ((Control) event.getSource()).fireEvent(keyEvent);
+    public void load() {
+        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+        companyName.setText(company.getName());
+        Image image = new Image(company.getImageFile());
+        companyImage.setImage(image);
+    }
+
+    public void save() {
+        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+        Json.guardar(company, "jsonFile.json");
+    }
+
+    public Cooperativa getCoope() {
+        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+        return company;
+    }
+
+    public List<Account> getListAccounts() {
+        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+        return company.getAccounts();
+    }
+
+    public List<Affiliated> getListAffiliates() {
+        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+        return company.getAffiliates();
+
     }
 
     public abstract void initialize();

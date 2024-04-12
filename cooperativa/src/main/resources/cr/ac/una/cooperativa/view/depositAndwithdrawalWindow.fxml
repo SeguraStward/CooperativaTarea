@@ -38,24 +38,29 @@
             <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="521.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="labelWarning" layoutX="292.0" layoutY="219.0" prefHeight="17.0" prefWidth="233.0" />
-                  <TextField fx:id="folioField" layoutX="171.0" layoutY="34.0" prefHeight="25.0" prefWidth="110.0" promptText="Ingresa el folio" />
-                  <Button fx:id="enterBtn" layoutX="292.0" layoutY="34.0" mnemonicParsing="false" text="Ingresar" />
-                  <Label layoutX="-2.0" layoutY="241.0" prefHeight="36.0" prefWidth="525.0" text="Buzón del propietario:">
+                  <TextField fx:id="folioField" layoutX="174.0" layoutY="34.0" prefHeight="25.0" prefWidth="110.0" promptText="Ingresa el folio" />
+                  <Button fx:id="enterBtn" layoutX="292.0" layoutY="34.0" mnemonicParsing="false" onAction="#buscarAction" text="Buscar" />
+                  <Label fx:id="buzonInfo" layoutX="-2.0" layoutY="241.0" prefHeight="36.0" prefWidth="193.0" text="Buzón del propietario:">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
                   <ChoiceBox fx:id="accountCbox" layoutX="151.0" layoutY="120.0" prefHeight="25.0" prefWidth="120.0" />
-                  <TextField fx:id="amountField" layoutX="284.0" layoutY="120.0" prefHeight="25.0" prefWidth="71.0" promptText="Cantidad" />
-                  <Button fx:id="depositBtn" layoutX="151.0" layoutY="152.0" mnemonicParsing="false" text="Depositar" />
-                  <Button fx:id="retirarBtn" layoutX="304.0" layoutY="152.0" mnemonicParsing="false" text="Retirar" />
+                  <TextField fx:id="amountField" layoutX="282.0" layoutY="120.0" prefHeight="25.0" prefWidth="71.0" promptText="Cantidad" />
+                  <Button fx:id="depositBtn" layoutX="151.0" layoutY="152.0" mnemonicParsing="false" onAction="#depostiAction" text="Depositar" />
+                  <Button fx:id="retirarBtn" layoutX="304.0" layoutY="152.0" mnemonicParsing="false" onAction="#withdrawalAction" text="Retirar" />
                   <Label fx:id="userLabel" alignment="CENTER" layoutX="174.0" layoutY="77.0" prefHeight="32.0" prefWidth="159.0" text="Usuario" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="77.0">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
                   <Label fx:id="labelWarning" layoutX="151.0" layoutY="186.0" prefHeight="23.0" prefWidth="202.0" />
-                  <Button fx:id="getBackBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Regresar" />
+                  <Button fx:id="getBackBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#getBackAction" text="Regresar" />
+                  <Label fx:id="buzonAmount" layoutX="193.0" layoutY="241.0" prefHeight="36.0" prefWidth="176.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>
