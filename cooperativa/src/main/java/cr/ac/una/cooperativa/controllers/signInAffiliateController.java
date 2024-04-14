@@ -98,10 +98,10 @@ public class signInAffiliateController extends Controller implements Initializab
     }
 
     @Override
-    public void initialize() {
+    public void initialize() { //to make sure that the camera won't be open when the window gets closed
         if (super.stage != null) {
             super.stage.setOnCloseRequest(event -> {
-                System.out.println("cerrando la ventana.");
+                System.out.println("closing camera");
                 stopCamera();
             });
         }
@@ -113,18 +113,19 @@ public class signInAffiliateController extends Controller implements Initializab
         webcam.open();
         run = true;
 
-        // Hilo para actualizar el ImageView con la vista previa de la cámara
+        //Why do i use this thread? because we need this to get executed at the same time of the main thread
+        // so the UI will keep its fluidity, I did not know about threads
         new Thread(() -> {
             while (run) {
                 BufferedImage bImage = webcam.getImage();
                 Image image = SwingFXUtils.toFXImage(bImage, null);
-                Platform.runLater(() -> userPicture.setImage(image));
+                Platform.runLater(() -> userPicture.setImage(image));// we uptade the userPicture in the main thread
 
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    System.out.println("Algo occurrio en el hilo");
+                    System.out.println("Something went wrong");
                     break;
                 }
             }
@@ -140,23 +141,23 @@ public class signInAffiliateController extends Controller implements Initializab
 
     @FXML
     private void captureImgAction(ActionEvent event) {
-        try {
+        try { // i use this try to use the button with two purposes to start the camera and capture a photo
             bufImage = webcam.getImage();
-            Image image = SwingFXUtils.toFXImage(bufImage, null);
+            Image image = SwingFXUtils.toFXImage(bufImage, null);//converting buffered img to Image
             userPicture.setImage(image);
             stopCamera();
         } catch (RuntimeException e) {
-            System.out.println("empezo la cameraaa");
+            System.out.println("the Camera started");
             start();
         }
 
     }
-
+    //this button action does not delete anything; it just activates the camera again if the camera was paused by captureImgAction
+    //i should change both the button and method names
     @FXML
     private void deleteImgAction(ActionEvent event) {
         bufImage = null;
         start();
-
     }
 
     @FXML

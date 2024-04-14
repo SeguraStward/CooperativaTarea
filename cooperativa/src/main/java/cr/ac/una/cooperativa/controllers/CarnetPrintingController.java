@@ -69,26 +69,26 @@ public class CarnetPrintingController extends Controller implements Initializabl
     
     @FXML
     private void printingCarnet(ActionEvent event){
-     if(getAccountToPrint()){
+     if(isAffiliatedToPrint()){
       try {
        
-        String destino = super.path + asociado.getName()+".pdf";
-        // Inicializar PDF writer y document
-        PdfWriter writer = new PdfWriter(destino);
+        String pdfPathAndName = super.path + asociado.getName()+".pdf";
+ // Creating the pdf
+        PdfWriter writer = new PdfWriter(pdfPathAndName);
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf, PageSize.A4);
-
+     //to add the image into the pdf and to make changes in the image
         ImageData imageData = ImageDataFactory.create(asociado.getPicture());
         Image image = new Image(imageData);
 
         float widthInInches = 2 + (15f / 72);
         float heightInInches = 2.5f + (15f / 72);
-        // Convertir a puntos para iText
+// = new size for the image
         image.scaleToFit(widthInInches * 72, heightInInches * 72);
-        
+        //adding the image first
         document.add(image);
-
-        Paragraph p1 = new Paragraph("Nombre: "+asociado.getName()+"\n Edad: "+ String.valueOf(asociado.getAge())+ "\nFolio: " + asociado.getFolio()+"\n");
+        //adding the information
+        Paragraph p1 = new Paragraph("Nombre: "+asociado.getName()+ "\n Apellido: "+ asociado.getLastName()+ "\n Edad: "+ String.valueOf(asociado.getAge())+ "\n Folio: " + asociado.getFolio()+"\n ");
         List<Account> accounts = asociado.getAccounts();
         String listAccounts = "";
         for(Account account: accounts){
@@ -101,21 +101,26 @@ public class CarnetPrintingController extends Controller implements Initializabl
        
         document.close();
         
-        System.out.println("pdf creado");
+        System.out.println("pdf created");
     } catch (Exception e) {
         e.printStackTrace();
+        System.out.println("something went wrong with the pdf");
     }
+     }else {
+         System.out.println("There is no Affiliated To Print");
+
      }
     }
 
-    private boolean getAccountToPrint() {
-                Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
-                List<Affiliated> asociates = company.getAffiliates();
-                
-                for(Affiliated aux: asociates){
-                    if(folioField.getText().equals(aux.getFolio())){
-                        asociado = aux;
-                        return true;
+    private boolean isAffiliatedToPrint() {
+                if(getCoope().getAffiliates() != null) {
+                    List<Affiliated> asociates = getCoope().getAffiliates();
+
+                    for (Affiliated aux : asociates) {
+                        if (folioField.getText().equals(aux.getFolio())) {
+                            asociado = aux;
+                            return true;
+                        }
                     }
                 }
                 return false;

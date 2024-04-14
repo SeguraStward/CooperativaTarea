@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.bridj.CRuntime;
+
 import javax.imageio.ImageIO;
 
 public abstract class Controller {
@@ -50,12 +52,17 @@ public abstract class Controller {
     public void setNombreVista(String nombreVista) {
         this.nombreVista = nombreVista;
     }
-
+    // this load the company's name and image
     public void load() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        companyName.setText(company.getName());
-        Image image = new Image(company.getImageFile());
-        companyImage.setImage(image);
+        try {
+            Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
+            companyName.setText(company.getName());
+            Image image = new Image(company.getImageFile());
+            companyImage.setImage(image);
+        }catch(NullPointerException e){
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public void save() {
@@ -69,45 +76,44 @@ public abstract class Controller {
     }
 
     public List<Account> getListAccounts() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        return company.getAccounts();
+        return getCoope().getAccounts();
     }
 
     public List<Affiliated> getListAffiliates() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        return company.getAffiliates();
+
+        return getCoope().getAffiliates();
 
     }
 
     public abstract void initialize();
 
     public void createDirectory() {
-        String userHome = System.getProperty("user.home");
-        File documentsDir = new File(userHome, "Documents");
-
+        String userHome = System.getProperty("user.home");//we get the userHome of the computer
+        File documentsDir = new File(userHome, "Documents");//finding the Documents so we can create a folder there
+         //testing if documents exist and it is a directory
         if (!documentsDir.exists() || !documentsDir.isDirectory()) {
-            System.out.println("El directorio 'Documents' no existe. Usando el directorio del usuario.");
-            documentsDir = new File(userHome);
+            System.out.println("Directory does not exist: " + documentsDir.getAbsolutePath());
+            documentsDir = new File(userHome);// we would use userHome to create there a folder and save things
         }
-
+        //creating the path in which we will create a folder 
         File myResources = new File(documentsDir, "CoopeResources");
-
+        //in case it exists or not we manage the different situations
         if (!myResources.exists()) {
             try {
                 if (myResources.mkdirs()) {
-                    System.out.println("Carpeta creada");
+                    System.out.println("Folder Created");
                 } else {
-                    System.out.println("Carpeta no creada");
+                    System.out.println("Folder was not created");
                 }
             } catch (SecurityException se) {
                 System.out.println("Error " + se.getMessage());
             }
         } else {
-            System.out.println("La carpeta ya existe");
+            System.out.println("The Folder already exists");
         }
         path = myResources.getPath();
     }
-
+    // it could be in an interface but, I did it here 
     public boolean isInteger(String str) {
         if (str == null) {
             return false;
@@ -119,15 +125,18 @@ public abstract class Controller {
             return false;
         }
     }
-    
+    // as well, it could be in an interface 
     public void saveImage(BufferedImage image, String fileName) {
-    File outputFile = new File(path + File.separator + fileName);
+        String imgPng = fileName + ".png";
+        File imgPath = new File(path + File.separator + imgPng);
+
     try {
-        // Aquí especificas el formato de la imagen, por ejemplo "png", "jpg"
-        ImageIO.write(image, "png", outputFile);
-        System.out.println("Imagen guardada en: " + outputFile.getAbsolutePath());
+
+        // here we specify the format of the image, and we write it in the specified path that as well includes the image's name
+        ImageIO.write(image, "png", imgPath);
+        System.out.println("image saved" + imgPath.getAbsolutePath());
     } catch (IOException e) {
-        System.out.println("Error al guardar la imagen: " + e.getMessage());
+        System.out.println("error given by trying to save img" + e.getMessage());
     }
 }
 }

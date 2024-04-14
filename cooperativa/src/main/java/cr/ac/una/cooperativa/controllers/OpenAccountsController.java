@@ -96,7 +96,7 @@ public class OpenAccountsController extends Controller implements Initializable 
     }
 
     private void addAccountsBox2(String name) {
-        System.out.println("se agrego al box2");
+        System.out.println("it is added in box2");
         Label aLabel = new Label(name);
         aLabel.setMaxWidth(Double.MAX_VALUE);
         aLabel.setPrefHeight(15);
