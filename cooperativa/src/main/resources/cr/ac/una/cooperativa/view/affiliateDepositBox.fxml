@@ -6,17 +6,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.affiliateDepositBoxController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="454.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="398.0" prefWidth="600.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="601.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -35,25 +35,59 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="452.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField fx:id="folioField" layoutX="131.0" layoutY="23.0" prefHeight="25.0" prefWidth="118.0" promptText="Ingrese su folio" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="203.0" AnchorPane.topAnchor="23.0" />
-                  <ChoiceBox fx:id="billeteCBox" layoutX="90.0" layoutY="67.0" prefHeight="25.0" prefWidth="35.0" />
-                  <Label fx:id="label" layoutX="130.0" layoutY="69.0" prefHeight="22.0" prefWidth="99.0" text=" Billetes" AnchorPane.bottomAnchor="186.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="69.0" />
-                  <ChoiceBox fx:id="monedaCBox" layoutX="231.0" layoutY="67.0" prefHeight="25.0" prefWidth="36.0" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="67.0" />
-                  <Label fx:id="label" layoutX="274.0" layoutY="69.0" prefHeight="22.0" prefWidth="70.0" text="Monedas" />
-                  <Label fx:id="label" layoutX="135.0" layoutY="104.0" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
-                  <Label fx:id="label" layoutX="274.0" layoutY="104.0" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
-                  <Button fx:id="depositBtn" layoutX="145.0" layoutY="206.0" mnemonicParsing="false" onAction="#depositAction" prefHeight="25.0" prefWidth="148.0" text="Depositar a tu buzón" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="206.0" />
-                  <Label fx:id="labelWarning" alignment="CENTER" layoutX="75.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="29.0" prefWidth="296.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="154.0" />
-                  <Button fx:id="search" layoutX="249.0" layoutY="23.0" mnemonicParsing="false" onAction="#searchAccount" text="Buscar" />
-                  <TextField fx:id="numOfBillete" layoutX="91.0" layoutY="103.0" prefHeight="25.0" prefWidth="34.0" />
-                  <TextField fx:id="numOfMoneda" layoutX="232.0" layoutY="103.0" prefHeight="25.0" prefWidth="34.0" />
-               </children>
+            <HBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
-            </AnchorPane>
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="297.0" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <TextField fx:id="folioField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="135.0" promptText="Ingrese su folio" />
+                              <Button fx:id="search" mnemonicParsing="false" onAction="#searchAccount" text="Buscar" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="userLabel" alignment="CENTER" prefHeight="28.0" prefWidth="296.0">
+                           <children>
+                              <Label fx:id="userLabel" text="Usuario">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="275.0">
+                           <children>
+                              <ChoiceBox fx:id="billeteCBox" prefHeight="25.0" prefWidth="62.0" />
+                              <Label fx:id="label" prefHeight="22.0" prefWidth="92.0" text="Billetes" />
+                              <TextField fx:id="numOfBillete" prefHeight="25.0" prefWidth="49.0" />
+                              <Label fx:id="label" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <ChoiceBox fx:id="monedaCBox" prefHeight="25.0" prefWidth="53.0" />
+                              <Label fx:id="label" prefHeight="22.0" prefWidth="100.0" text="Monedas" />
+                              <TextField fx:id="numOfMoneda" prefHeight="25.0" prefWidth="51.0" />
+                              <Label fx:id="label" prefHeight="22.0" prefWidth="55.0" text="Cantidad" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="269.0">
+                           <children>
+                              <Button fx:id="depositBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#depositAction" prefHeight="25.0" prefWidth="148.0" text="Depositar a tu buzón" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="labelWarning" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="29.0" prefWidth="296.0" />
+                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitAction" text="Salir" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="308.0" prefWidth="304.0" />
+               </children>
+            </HBox>
          </center>
       </BorderPane>
    </children>

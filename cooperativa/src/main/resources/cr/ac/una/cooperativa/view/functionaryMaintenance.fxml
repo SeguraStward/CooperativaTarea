@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -15,7 +14,7 @@
 
 <StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryMaintenanceController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="398.0" prefWidth="617.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="622.0" StackPane.alignment="CENTER">
          <top>
             <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="96.0" prefWidth="599.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
@@ -36,25 +35,39 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="313.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <HBox BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="scrollAffiliates" hbarPolicy="NEVER" layoutX="4.0" layoutY="82.0" prefHeight="219.0" prefWidth="397.0">
-                     <content>
-                        <VBox fx:id="vboxAffiliates" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="216.0" prefWidth="397.0" />
-                     </content>
-                  </ScrollPane>
-                  <TextField fx:id="nameField" layoutX="415.0" layoutY="82.0" prefHeight="25.0" prefWidth="66.0" promptText="Nombre " />
-                  <TextField fx:id="ageField" layoutX="415.0" layoutY="116.0" prefHeight="25.0" prefWidth="44.0" promptText="Edad" />
-                  <Button fx:id="chooseImg" layoutX="438.0" layoutY="230.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="33.0" prefWidth="87.0" text="Select Image" />
-                  <Button fx:id="addBtn" layoutX="455.0" layoutY="263.0" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="45.0" text="Add" />
-                  <ImageView fx:id="userPicture" fitHeight="68.0" fitWidth="86.0" layoutX="438.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
-                  <VBox fx:id="boxAffFolio" alignment="CENTER" layoutX="7.0" layoutY="31.0" prefHeight="46.0" prefWidth="392.0" />
-                  <TextField fx:id="search" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="100.0" promptText="Buscar Folio" />
-                  <Button fx:id="searchBtn" layoutX="114.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="75.0" text="buscar" />
-                  <Button fx:id="readyBtn" layoutX="495.0" layoutY="2.0" mnemonicParsing="false" onAction="#readyAction" prefHeight="25.0" prefWidth="52.0" text="Ready" />
-                  <TextField fx:id="lastNameField" layoutX="493.0" layoutY="82.0" prefHeight="25.0" prefWidth="68.0" promptText="Apellido" />
+                  <VBox alignment="TOP_CENTER" prefHeight="304.0" prefWidth="255.0">
+                     <children>
+                        <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="144.0" promptText="Nombre " />
+                        <TextField fx:id="lastNameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="144.0" promptText="Apellido" />
+                        <TextField fx:id="ageField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="49.0" promptText="Edad" />
+                        <Button fx:id="chooseImg" mnemonicParsing="false" onAction="#chooseImage" prefHeight="27.0" prefWidth="101.0" text="Select Image" />
+                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="123.0" text="Agregar asociado" />
+                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="124.0" text="Guardar" />
+                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitAction" prefHeight="25.0" prefWidth="122.0" text="Salir" />
+                        <ImageView fx:id="userPicture" fitHeight="64.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="warning" prefHeight="28.0" prefWidth="184.0" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <TextField fx:id="search" prefHeight="25.0" prefWidth="100.0" promptText="Buscar Folio" />
+                              <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="75.0" text="buscar" />
+                           </children>
+                        </HBox>
+                        <VBox fx:id="boxAffFolio" alignment="CENTER" prefHeight="51.0" prefWidth="433.0" />
+                        <ScrollPane fx:id="scrollAffiliates" prefHeight="227.0" prefWidth="366.0">
+                           <content>
+                              <VBox fx:id="vboxAffiliates" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="227.0" prefWidth="528.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </AnchorPane>
+            </HBox>
          </center>
       </BorderPane>
    </children>

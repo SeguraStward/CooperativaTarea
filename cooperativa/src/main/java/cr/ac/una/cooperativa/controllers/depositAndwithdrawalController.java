@@ -17,7 +17,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -27,7 +26,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author stward segura
  */
-public class depositAndwithdrawalController implements Initializable {
+public class depositAndwithdrawalController extends Controller implements Initializable {
 
     @FXML
     private StackPane mainPane;
@@ -59,7 +58,7 @@ public class depositAndwithdrawalController implements Initializable {
     private Label userLabel;
     @FXML
     private Button getBackBtn;
-    private Affiliated asociado;
+    private Affiliated affiliated;
     @FXML
     private Label buzonAmount;
     
@@ -68,7 +67,7 @@ public class depositAndwithdrawalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        accountCbox.getItems().add("Nada seleccionado");
     }    
 
     @FXML
@@ -77,11 +76,11 @@ public class depositAndwithdrawalController implements Initializable {
         List<Affiliated> asociados = company.getAffiliates();
         for(Affiliated aux: asociados){
             if(aux.getFolio().equals(folioField.getText())){
-                asociado = aux;
-                userLabel.setText(asociado.getName());
+                affiliated = aux;
+                userLabel.setText(affiliated.getName());
                 folioField.clear();
                 insertAccountsInCBox();
-                buzonAmount.setText(String.valueOf(asociado.getBuzon()));
+                buzonAmount.setText(String.valueOf(affiliated.getBuzon()));
                 return;
             }          
         }
@@ -91,10 +90,10 @@ public class depositAndwithdrawalController implements Initializable {
 
     @FXML
     private void depostiAction(ActionEvent event) {
-       if(asociado != null){
-        List<Account> asociateAccounts= asociado.getAccounts();
+       if(affiliated != null){
+        List<Account> asociateAccounts= affiliated.getAccounts();
          folioField.clear();
-          userLabel.setText(asociado.getName());
+          userLabel.setText(affiliated.getName());
 
            for(Account aux: asociateAccounts){
               if(aux.getName().equals(accountCbox.getValue())){                 
@@ -102,100 +101,112 @@ public class depositAndwithdrawalController implements Initializable {
                 
               }else if(accountCbox.getValue().equals("Buzon")){
                   int deposit = Integer.parseInt(amountField.getText());
-                  int newAmountBuzon = asociado.getBuzon() + deposit;
-                  asociado.setBuzon(newAmountBuzon);
-                  buzonAmount.setText(String.valueOf(asociado.getBuzon()));
-                  amountField.setPromptText("Deposito hecho");
+                  int newAmountBuzon = affiliated.getBuzon() + deposit;
+                  affiliated.setBuzon(newAmountBuzon);
+                  buzonAmount.setText(String.valueOf(affiliated.getBuzon()));
+                 labelWarning.setText("Deposito hecho en el buzon");
 
            }
            }
        }else{
-           folioField.setPromptText("Ingresa Primero!!!");
+           labelWarning.setText("No existe el asociado");
        }
     }
 
     @FXML
     private void withdrawalAction(ActionEvent event) {
-       if(asociado != null){
-        List<Account> asociateAccounts= asociado.getAccounts();
+        //checking this to work good within the if
+       if(affiliated != null && affiliated.getAccounts() != null){
+        List<Account> asociateAccounts= affiliated.getAccounts();
           folioField.clear();
-            userLabel.setText(asociado.getName());
-           for(Account aux: asociateAccounts){
+            userLabel.setText(affiliated.getName());
+           for(Account aux: asociateAccounts){//looking for the right account
               if(aux.getName().equals(accountCbox.getValue())){                 
-                  withdrawalFromAccount(aux);
+                  withdrawalFromAccount(aux);//doing the withdrawal
                 
-              }else if(accountCbox.getValue().equals("Buzon")){
-                  try{
+              }else if(accountCbox.getValue().equals("Buzon")){// if we want to withdrawal money from the buzon
+                  try{//getting the amount of the withdrawal
                       int withdrawal = Integer.parseInt(amountField.getText());
-                      if(asociado.getBuzon() >= withdrawal){
-                      int newAmountBuzon = asociado.getBuzon() - withdrawal;
-                      asociado.setBuzon(newAmountBuzon);
-                      buzonAmount.setText(String.valueOf(asociado.getBuzon()));
-                      amountField.setPromptText("Deposito hecho");
+                      if(affiliated.getBuzon() >= withdrawal){// the withdrawal has to be less than or equal the buzon
+                      int newAmountBuzon = affiliated.getBuzon() - withdrawal;//updating the new
+                      affiliated.setBuzon(newAmountBuzon);// amount of the buzon
+                      buzonAmount.setText(String.valueOf(affiliated.getBuzon()));//updating the window buzon
+                      labelWarning.setText("Deposito hecho");//confirmation label future creation
                       }else{
-                      amountField.setPromptText("Fondos insuficientes");
+                      labelWarning.setText("Fondos insuficientes");
                       }
-                  } catch (NumberFormatException e) {
-                      amountField.setPromptText("Numeros!!!!");
+                  } catch (Exception e) {
+                     labelWarning.setText("Ingresa numeros!!");
                   }
                 }   
            }
        }else{
-           folioField.setPromptText("Ingresa Primero!!!");
+           labelWarning.setText("No existe el asociado");
        }
     } 
 
     @FXML
     private void getBackAction(ActionEvent event) {
+        labelWarning.setText("");
+        accountCbox.getItems().clear();
         FlowController.getInstance().goView("functionaryMaintenance");
         
     }
     private void insertAccountsInCBox(){
-       List<Account> asociateAccounts= asociado.getAccounts();
-       
-       for(Account aux: asociateAccounts){
-           accountCbox.getItems().add(aux.getName());
-       }
-       
-       accountCbox.getItems().add("Buzon");
+        if(affiliated.getAccounts() != null) {
+            List<Account> affAccounts = affiliated.getAccounts();
+            for (Account aux : affAccounts) {
+                accountCbox.getItems().add(aux.getName());
+            }
+            labelWarning.setText("");
+            accountCbox.getItems().add("Buzon");
+        }else{
+            labelWarning.setText("No existe el asociado");
+        }
     }
-    
+    //we deposit from the buzon to the account
     private void depositFromBuzon(Account account){
-        try {
+        try {//getting the amount of the deposit
             int deposit = Integer.parseInt(amountField.getText());
-            if(asociado.getBuzon()>= deposit){
-                int newAmountBuzon = asociado.getBuzon() - deposit;
+            if(affiliated.getBuzon()>= deposit){//the buzon has to be greater than or equal the deposit
+                //we update the amount of money in the buzon
+                int newAmountBuzon = affiliated.getBuzon() - deposit;
                 int newAmountAccount = account.getMoney() + deposit;
-                account.setMoney(newAmountAccount);
-                asociado.setBuzon(newAmountBuzon);
-                buzonAmount.setText(String.valueOf(asociado.getBuzon()));
-                amountField.setPromptText("Deposito hecho");
+                account.setMoney(newAmountAccount);// we add the money to the account
+                affiliated.setBuzon(newAmountBuzon);//updating affiliated's buzon
+                buzonAmount.setText(String.valueOf(affiliated.getBuzon()));//updating window's buzon
+                amountField.setPromptText("Deposito hecho");//add confirmation label future advice
+                labelWarning.setText("");
+
             }else{
-                amountField.setPromptText("no tiene fondos");
+                labelWarning.setText("Fondos insuficientes");
             }
             
         } catch (NumberFormatException e) {
-            amountField.setPromptText("Numeros!!!!");
+           labelWarning.setText("Ingresa numeros!!");
         }
     }
     
     private void withdrawalFromAccount(Account account){
-         try {
+         try {//we get the amount
             int withdrawal = Integer.parseInt(amountField.getText());
+            //the withdrawal has to be equal or less than the account's money
             if(account.getMoney()>= withdrawal){
-               
+               //account's new amount of money
                 int newAmountAccount = account.getMoney() - withdrawal;
-                account.setMoney(newAmountAccount);
-               
-             
-                amountField.setPromptText("Retiro hecho");
+                account.setMoney(newAmountAccount);//updating account's money
+                amountField.setPromptText("Retiro hecho");//create confirmation label
             }else{
-                amountField.setPromptText("no tiene fondos");
+                labelWarning.setText("Fondos insuficientes");
             }
             
-        } catch (NumberFormatException e) {
-            amountField.setPromptText("Numeros!!!!");
+        } catch (Exception e) {
+            labelWarning.setText("Ingresa numeros!!");
         }
     }
- 
+
+    @Override
+    public void initialize() {
+
+    }
 }

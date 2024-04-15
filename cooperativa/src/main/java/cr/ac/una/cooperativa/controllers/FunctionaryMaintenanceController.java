@@ -5,6 +5,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import cr.ac.una.cooperativa.util.FlowController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -70,7 +72,8 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     private Button readyBtn;
     @FXML
     private TextField lastNameField;
-
+    @FXML
+    private Label warning;
     /**
      * Initializes the controller class.
      *
@@ -81,6 +84,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     public void initialize(URL url, ResourceBundle rb) {
         super.load();
         showSavedAccounts();
+
     }
 
     @Override
@@ -91,18 +95,19 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     private void addAffiliate(ActionEvent event) {
 
         if (nameField.getText().length() < 4) {
-            nameField.setPromptText("Invalid name");
+
+            warning.setText("Nombre invalido");
 
         } else if (Integer.parseInt(ageField.getText()) > 18) {
 
-            ageField.setPromptText("Invalid age");
+            warning.setText("Edad invalida");
         } else if (userPicture == null) {
-
+            warning.setText("Foto de usuario Invalida");
         }else if(lastNameField.getText().length() < 4){
-            lastNameField.setPromptText("Invalid lastName");
-        }else {
-
-            Affiliated newAff = new Affiliated(nameField.getText(),Integer.parseInt(ageField.getText()));
+            warning.setText("Apellido invalido");
+        }else {//finally we add the affiliated
+            warning.setText("");
+            Affiliated newAff = new Affiliated(nameField.getText(),lastNameField.getText(),Integer.parseInt(ageField.getText()));
             newAff.setPicture(currentImg);
             super.getCoope().addAffiliated(newAff);
             super.getCoope().assignFolio(newAff);
@@ -111,7 +116,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
     }
 
     public void addAffiliateToBox(Affiliated affil, VBox box) {
-
+         // all that user's hbox needs
         Image image = new Image(affil.getPicture());
         ImageView userPhoto = new ImageView(image);
         userPhoto.setFitWidth(50);
@@ -121,17 +126,18 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         Label age = new Label(String.valueOf(affil.getAge()));
         Label folio = new Label(affil.getFolio());
         Button delete = new Button("Delete");
-        Button editName = new Button("Editar nombre");
-        Button editLastName = new Button("Editar apellido");
+        Button editName = new Button("Editar\n nombre");
+        Button editLastName = new Button("Editar\n apellido");
         Button newUserPhoto = new Button("Imagen");
+      //normal procedure nothing especial
         HBox userBox = new HBox(10);
-
         userBox.setPrefHeight(15);
         userBox.setAlignment(Pos.CENTER);
         userBox.getChildren().addAll(userPhoto, name,lastName, age, folio, editName, newUserPhoto, delete);
         userBox.getStyleClass().add("accountsHbox");
         box.getChildren().add(userBox);
-
+        //we assign each button the actions that will delete or edit the userBox
+        //and the affiliate attributes
         delete.setOnAction(e -> {
             deleteAffiliate(name.getText());
             box.getChildren().remove(userBox);
@@ -145,23 +151,19 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         newUserPhoto.setOnAction(e -> {
             chooseImage(affil, userPhoto);
         });
-        
-        
-        
     }
 
     private void deleteAffiliate(String name) {
-        List<Affiliated> affiliates = super.getCoope().getAffiliates();
-        affiliates.removeIf(a -> a.getName().equals(name));
+
+            List<Affiliated> affiliates = super.getCoope().getAffiliates();
+            affiliates.removeIf(a -> a.getName().equals(name));
 
     }
-
+//small window to edit the labels of the user
     private void editWindow(Label label) {
         Stage stage = new Stage();
         stage.setTitle("Editar "+ label.getText());
-        
-        List<Affiliated> affiliates = super.getCoope().getAffiliates();
-        VBox vbox = new VBox(10);
+        VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(10));
 
@@ -175,8 +177,9 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         Scene scene = new Scene(vbox, 300, 150);
         stage.setScene(scene);
         stage.showAndWait();
-        
-         confirmButton.setOnAction(e -> {
+
+        List<Affiliated> affiliates = super.getCoope().getAffiliates();
+        confirmButton.setOnAction(e -> {//changing the affiliate's label
             for (Affiliated affiliate : affiliates) {
                 if (affiliate.getName().equals(label.getText())) {
                     affiliate.setName(textField.getText());
@@ -188,22 +191,22 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         });
     }
 
-    private void chooseImage(Affiliated asociado, ImageView img) {
+    private void chooseImage(Affiliated asociated, ImageView img) {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Selecciona la imagen");
+        fileChooser.setTitle("Select Image");
         File file = fileChooser.showOpenDialog(super.getStage());
         if (file != null) {
             try {
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
-                if(asociado != null){
-                asociado.setPicture(file.toURI().toString());
-                }else if(asociado == null){
+                if(asociated != null){
+                asociated.setPicture(file.toURI().toString());
+                }else {
                     currentImg = file.toURI().toString();
                 }
             } catch (Exception e) {
-                System.err.println("Error al cargar la imagen: " + e.getMessage());
+                System.err.println("Error loading the image: " + e.getMessage());
             }
         }
 
@@ -219,10 +222,11 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
         boxAffFolio.getChildren().clear();
        
-        List<Affiliated> afiliados = super.getCoope().getAffiliates();
-        if (afiliados != null) {
-            for (Affiliated aux : afiliados) {
+        List<Affiliated> affiliates = super.getCoope().getAffiliates();
+        if (affiliates != null) {
+            for (Affiliated aux : affiliates) {
                 if (search.getText().equals(aux.getFolio())) {
+                    //add the searched affiliate to a different Vbox
                     addAffiliateToBox(aux, boxAffFolio);
                     System.out.println("listooooo");
                 } else {
@@ -237,16 +241,29 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
     private void showSavedAccounts() {
 
-       
-        List<Affiliated> asociados = super.getCoope().getAffiliates();
-        for (Affiliated asociado : asociados) {
-            addAffiliateToBox(asociado, vboxAffiliates);
-        }
-
+       if(super.getCoope().getAffiliates() != null) {
+           List<Affiliated> affiliates  = super.getCoope().getAffiliates();
+           for (Affiliated affiliated : affiliates) {
+               addAffiliateToBox(affiliated, vboxAffiliates);
+           }
+       }
     }
 
     @FXML
-    private void readyAction(ActionEvent event) {
+    private void saveAction(ActionEvent event) {
         super.save();
+        nameField.setText("");
+        lastNameField.setText("");
+        ageField.setText("");
+    }
+
+    @FXML
+    private void exitAction(ActionEvent event) {
+        nameField.setText("");
+        lastNameField.setText("");
+        ageField.setText("");
+        boxAffFolio.getChildren().clear();
+        vboxAffiliates.getChildren().clear();
+        FlowController.getInstance().goView("functionaryMaintenance");
     }
 }

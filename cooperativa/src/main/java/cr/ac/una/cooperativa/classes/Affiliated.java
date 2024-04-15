@@ -20,11 +20,12 @@ public class Affiliated {
         age = 0;
     }
 
-    public Affiliated(String name, int age) {
+    public Affiliated(String name,String lastName, int age) {
         this.name = name;
         this.accounts = new ArrayList<>();
         this.picture = null;
         this.age = age;
+        this.lastName = lastName;
     }
 
     public int getAge() {

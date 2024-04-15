@@ -56,10 +56,15 @@ public abstract class Controller {
     public void load() {
         try {
             Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-            companyName.setText(company.getName());
-            Image image = new Image(company.getImageFile());
-            companyImage.setImage(image);
-        }catch(NullPointerException e){
+            if(company.getName() != null && company.getImageFile() != null) {
+                companyName.setText(company.getName());
+                Image image = new Image(company.getImageFile());
+                companyImage.setImage(image);
+            }else {
+                companyImage.setImage(null);
+                companyName.setText("Cooperativa");
+            }
+        }catch(Exception e){
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
         }
@@ -105,8 +110,8 @@ public abstract class Controller {
                 } else {
                     System.out.println("Folder was not created");
                 }
-            } catch (SecurityException se) {
-                System.out.println("Error " + se.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error " + e.getMessage());
             }
         } else {
             System.out.println("The Folder already exists");
@@ -131,7 +136,6 @@ public abstract class Controller {
         File imgPath = new File(path + File.separator + imgPng);
 
     try {
-
         // here we specify the format of the image, and we write it in the specified path that as well includes the image's name
         ImageIO.write(image, "png", imgPath);
         System.out.println("image saved" + imgPath.getAbsolutePath());

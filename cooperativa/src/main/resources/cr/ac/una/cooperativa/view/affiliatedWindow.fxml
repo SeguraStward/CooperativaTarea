@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -14,7 +13,7 @@
    <children>
       <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -33,17 +32,13 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="281.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="selectionHbox" alignment="CENTER" prefHeight="217.0" prefWidth="449.0" spacing="20.0">
                <children>
-                  <HBox fx:id="selectionHbox" alignment="CENTER" layoutY="3.0" prefHeight="217.0" prefWidth="449.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <MFXButton fx:id="registrarseBtn" buttonType="RAISED" depthLevel="LEVEL3" onAction="#goRegister" prefHeight="80.0" prefWidth="88.0" text="Registrarse" />
-                        <MFXButton fx:id="consultaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" onAction="#goStatementInquiry" prefHeight="80.0" prefWidth="88.0" text="Consulta" />
-                        <MFXButton fx:id="buzonBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" onAction="#goBuzon" prefHeight="80.0" prefWidth="88.0" text="buzón" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
+                  <MFXButton fx:id="registrarseBtn" buttonType="RAISED" depthLevel="LEVEL3" onAction="#goRegister" prefHeight="80.0" prefWidth="88.0" text="Registrarse" />
+                  <MFXButton fx:id="consultaBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="10.0" layoutY="10.0" onAction="#goStatementInquiry" prefHeight="80.0" prefWidth="88.0" text="Consulta" />
+                  <MFXButton fx:id="buzonBtn" buttonType="RAISED" depthLevel="LEVEL3" layoutX="98.0" layoutY="10.0" onAction="#goBuzon" prefHeight="80.0" prefWidth="88.0" text="buzón" HBox.hgrow="ALWAYS" />
                </children>
-            </AnchorPane>
+            </HBox>
          </center>
       </BorderPane>
    </children>
