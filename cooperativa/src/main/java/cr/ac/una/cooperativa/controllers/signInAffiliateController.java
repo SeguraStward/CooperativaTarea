@@ -4,10 +4,11 @@ import com.github.sarxos.webcam.Webcam;
 import cr.ac.una.cooperativa.classes.Affiliated;
 import cr.ac.una.cooperativa.util.FlowController;
 import io.github.palexdev.materialfx.utils.SwingFXUtils;
-import io.github.palexdev.mfxeffects.utils.NumberUtils;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -18,9 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 
 /**
  *
@@ -29,62 +27,39 @@ import javafx.scene.layout.StackPane;
 public class signInAffiliateController extends Controller implements Initializable {
 
     @FXML
-    private StackPane mainPane;
-    @FXML
-    private HBox head;
-    @FXML
-    private ImageView companyImage;
-    @FXML
     private TextField nameField;
     @FXML
     private TextField ageField;
-    @FXML
-    private Button saveBtn;
+
     @FXML
     private ImageView userPicture;
-    @FXML
-    private Label companyName;
+
     @FXML
     private TextField lastNameField;
     @FXML
     private Label userFolio;
-    @FXML
-    private Button captureImgBtn;
+
     @FXML
     private Button deleteImgBtn;
     private Webcam webcam;
     private boolean run;
     private BufferedImage bufImage;
     @FXML
-    private Button exitBtn;
-    @FXML
     private Label guideLabel;
 
-    @FXML// me falta verificar que no ingrese un nombre ya registrado
+    @FXML
     private void saveAffiliateInfo(ActionEvent event) {
-        if (nameField.getText().length() <= 3) {
-            guideLabel.setText("Nombre no valido");
-        } else if (lastNameField.getText().length() <= 3) {
-            guideLabel.setText("Edad no valida");
-
-        } else if (bufImage == null) {
-            guideLabel.setText("Captura tu foto!!!");
-
-        }else if(!isInteger(ageField.getText())){
-            guideLabel.setText("No es un numero");
-        }else if(Integer.parseInt(ageField.getText()) >= 18){
-            guideLabel.setText("Muy viejo vaya trabaje");
-        }else{
-            Affiliated asociado = new Affiliated();
-            asociado.setName(nameField.getText());
-            super.saveImage(bufImage, asociado.getName());
-            String imgPath = super.path + File.separator + asociado.getName();
-            asociado.setPicture(imgPath);
-            asociado.setAge(Integer.parseInt(ageField.getText()));
-            asociado.setLastName(lastNameField.getText());
-            super.getCoope().addAffiliated(asociado);
-            super.getCoope().assignFolio(asociado);
-            userFolio.setText(asociado.getFolio());
+       if(verifyingInputs() && verifyingAuthenticity(nameField, lastNameField)){
+            Affiliated affiliated = new Affiliated();
+            affiliated.setName(nameField.getText());
+            super.saveImage(bufImage, affiliated.getName());
+            String imgPath = super.path + File.separator + affiliated.getName();
+            affiliated.setPicture(imgPath);
+            affiliated.setAge(Integer.parseInt(ageField.getText()));
+            affiliated.setLastName(lastNameField.getText());
+            super.getCoope().addAffiliated(affiliated);
+            super.getCoope().assignFolio(affiliated);
+            userFolio.setText(affiliated.getFolio());
             guideLabel.setText("Registrado");
             super.save();
         }
@@ -119,13 +94,12 @@ public class signInAffiliateController extends Controller implements Initializab
             while (run) {
                 BufferedImage bImage = webcam.getImage();
                 Image image = SwingFXUtils.toFXImage(bImage, null);
-                Platform.runLater(() -> userPicture.setImage(image));// we uptade the userPicture in the main thread
+                Platform.runLater(() -> userPicture.setImage(image));// we update the userPicture in the main thread
 
                 try {
                     Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    System.out.println("Something went wrong");
+                } catch (Exception e) {
+                    System.out.println("Something went wrong" + e.getMessage());
                     break;
                 }
             }
@@ -146,8 +120,8 @@ public class signInAffiliateController extends Controller implements Initializab
             Image image = SwingFXUtils.toFXImage(bufImage, null);//converting buffered img to Image
             userPicture.setImage(image);
             stopCamera();
-        } catch (RuntimeException e) {
-            System.out.println("the Camera started");
+        } catch (Exception e) {
+            System.out.println("the Camera started" + e.getMessage());
             start();
         }
 
@@ -164,4 +138,33 @@ public class signInAffiliateController extends Controller implements Initializab
     private void exitBtnAction(ActionEvent event) {
     FlowController.getInstance().goView("affiliatedWindow");
     }
+
+    private boolean verifyingInputs(){
+        boolean condition = true;
+        try {
+            if (nameField.getText().length() <= 3) {
+                condition = false;
+                guideLabel.setText("Nombre no valido");
+            } else if (lastNameField.getText().length() <= 3) {
+                condition = false;
+                guideLabel.setText("Edad no valida");
+            } else if (bufImage == null) {
+                condition = false;
+                guideLabel.setText("Captura tu foto!!!");
+            } else if (!isInteger(ageField.getText())) {
+                condition = false;
+                guideLabel.setText("No es un numero");
+            } else if (Integer.parseInt(ageField.getText()) >= 18) {
+                condition = false;
+                guideLabel.setText("Muy viejo vaya trabaje");
+            }
+        }catch(Exception e){
+            condition = false;
+            System.err.println("Error " + e.getMessage());
+        }
+        return condition;
+    }
+
+
+
 }

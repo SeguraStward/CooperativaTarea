@@ -77,44 +77,44 @@ public class OpenAccountsController extends Controller implements Initializable 
     }
 
     private void addAccountsBox1(String name) {
-        Label aLabel = new Label(name);
-        aLabel.setMaxWidth(Double.MAX_VALUE);
-        aLabel.setPrefHeight(15);
-        aLabel.setAlignment(Pos.CENTER);
-        allAccounts.getChildren().add(aLabel);
+        Label label = new Label(name);
+        label.setMaxWidth(Double.MAX_VALUE);
+        label.setPrefHeight(15);
+        label.setAlignment(Pos.CENTER);
+        allAccounts.getChildren().add(label);
 
-        aLabel.setOnDragDetected(event -> {
-            Dragboard db = aLabel.startDragAndDrop(TransferMode.COPY);
+        label.setOnDragDetected(event -> {
+            Dragboard db = label.startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
-            content.putString(aLabel.getText());
+            content.putString(label.getText());
             db.setContent(content);
             event.consume();
         });
-        aLabel.setOnDragDone(event -> {
+        label.setOnDragDone(event -> {
             event.consume();
         });
     }
 
     private void addAccountsBox2(String name) {
         System.out.println("it is added in box2");
-        Label aLabel = new Label(name);
-        aLabel.setMaxWidth(Double.MAX_VALUE);
-        aLabel.setPrefHeight(15);
-        aLabel.setAlignment(Pos.CENTER);
-        affiliateAccounts.getChildren().add(aLabel);
+        Label label = new Label(name);
+        label.setMaxWidth(Double.MAX_VALUE);
+        label.setPrefHeight(15);
+        label.setAlignment(Pos.CENTER);
+        affiliateAccounts.getChildren().add(label);
 
-        aLabel.setOnDragDetected(event -> {
-            Dragboard db = aLabel.startDragAndDrop(TransferMode.MOVE);
+        label.setOnDragDetected(event -> {
+            Dragboard db = label.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
-            content.putString(aLabel.getText());
+            content.putString(label.getText());
             db.setContent(content);
             event.consume();
         });
 
-        aLabel.setOnDragDone(event -> {
+        label.setOnDragDone(event -> {
             if (event.getTransferMode() == TransferMode.MOVE && dropDone) {
-                accounts.removeIf(e -> e.getName().equals(aLabel.getText()));
-                affiliateAccounts.getChildren().remove(aLabel);
+                accounts.removeIf(e -> e.getName().equals(label.getText()));
+                affiliateAccounts.getChildren().remove(label);
                 dropDone = false;
 
             }
@@ -177,9 +177,9 @@ public class OpenAccountsController extends Controller implements Initializable 
     private void searchAffiliate(ActionEvent event) {
         affiliateAccounts.getChildren().clear();
         allAccounts.getChildren().clear();
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        List<Affiliated> asociados = company.getAffiliates();
-        for (Affiliated aux : asociados) {
+
+        List<Affiliated> associates = getCoope().getAffiliates();
+        for (Affiliated aux : associates) {
             if (aux.getFolio().equals(folioField.getText())) {
                 asociado = aux;
                 accounts = asociado.getAccounts();
@@ -193,8 +193,8 @@ public class OpenAccountsController extends Controller implements Initializable 
     }
 
     private void loadCompanyAccounts() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        List<Account> accountsComp = company.getAccounts();
+
+        List<Account> accountsComp = getCoope().getAccounts();
         for (Account aux : accountsComp) {
             addAccountsBox1(aux.getName());
         }
@@ -202,9 +202,10 @@ public class OpenAccountsController extends Controller implements Initializable 
     }
 
     private void loadAffiliateAccounts() {
-
-        for (Account aux : accounts) {
-            addAccountsBox2(aux.getName());
+        if(accounts != null) {
+            for (Account aux : accounts) {
+                addAccountsBox2(aux.getName());
+            }
         }
     }
 
@@ -216,12 +217,12 @@ public class OpenAccountsController extends Controller implements Initializable 
         } else {
             for (Account aux : accounts) {
                 if (aux.getName().equals(name)) {
-                    System.out.println("devolvioTrue");
+                    System.out.println("devolviotrue");
                     return true;
                 }
             }
         }
-        System.out.println("devolvioFalse");
+        System.out.println("devolviofalse");
 
         return false;
 

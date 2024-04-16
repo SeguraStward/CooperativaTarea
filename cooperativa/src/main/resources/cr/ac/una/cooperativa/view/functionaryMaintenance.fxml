@@ -14,7 +14,7 @@
 
 <StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryMaintenanceController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="622.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="416.0" prefWidth="600.0" StackPane.alignment="CENTER">
          <top>
             <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="96.0" prefWidth="599.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
@@ -40,14 +40,22 @@
                   <VBox alignment="TOP_CENTER" prefHeight="304.0" prefWidth="255.0">
                      <children>
                         <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="144.0" promptText="Nombre " />
+                        <Label fx:id="warningName" alignment="CENTER" prefHeight="17.0" prefWidth="140.0" />
                         <TextField fx:id="lastNameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="144.0" promptText="Apellido" />
+                        <Label fx:id="warningLast" alignment="CENTER" layoutX="46.0" layoutY="35.0" prefHeight="17.0" prefWidth="140.0" />
                         <TextField fx:id="ageField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="49.0" promptText="Edad" />
-                        <Button fx:id="chooseImg" mnemonicParsing="false" onAction="#chooseImage" prefHeight="27.0" prefWidth="101.0" text="Select Image" />
-                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="123.0" text="Agregar asociado" />
-                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="124.0" text="Guardar" />
+                        <Label fx:id="warningAge" alignment="CENTER" layoutX="46.0" layoutY="77.0" prefHeight="17.0" prefWidth="140.0" />
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <ImageView fx:id="userPicture" fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="chooseImg" mnemonicParsing="false" onAction="#chooseImage" prefHeight="27.0" prefWidth="64.0" text="Imagen" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="warningImg" alignment="CENTER" layoutX="46.0" layoutY="35.0" prefHeight="17.0" prefWidth="140.0" />
+                        <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addAffiliate" prefHeight="25.0" prefWidth="123.0" text="Agregar asociado" />
+                        <Label fx:id="warningAdd" alignment="CENTER" layoutX="46.0" layoutY="35.0" prefHeight="17.0" prefWidth="140.0" />
                         <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitAction" prefHeight="25.0" prefWidth="122.0" text="Salir" />
-                        <ImageView fx:id="userPicture" fitHeight="64.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="warning" prefHeight="28.0" prefWidth="184.0" />
+                        <Label fx:id="message" alignment="CENTER" prefHeight="26.0" prefWidth="215.0" />
                      </children>
                   </VBox>
                   <VBox>
@@ -56,6 +64,7 @@
                            <children>
                               <TextField fx:id="search" prefHeight="25.0" prefWidth="100.0" promptText="Buscar Folio" />
                               <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="75.0" text="buscar" />
+                              <Label fx:id="warningSearch" alignment="CENTER" prefHeight="21.0" prefWidth="134.0" />
                            </children>
                         </HBox>
                         <VBox fx:id="boxAffFolio" alignment="CENTER" prefHeight="51.0" prefWidth="433.0" />

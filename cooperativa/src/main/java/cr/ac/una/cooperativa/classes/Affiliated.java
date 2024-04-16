@@ -18,6 +18,8 @@ public class Affiliated {
         accounts = new ArrayList<>();
         picture = "";
         age = 0;
+        lastName = "";
+        buzon = 0;
     }
 
     public Affiliated(String name,String lastName, int age) {

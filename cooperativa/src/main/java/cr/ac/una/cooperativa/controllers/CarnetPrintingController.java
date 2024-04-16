@@ -2,30 +2,31 @@ package cr.ac.una.cooperativa.controllers;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.borders.SolidBorder;
+import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-import cr.ac.una.cooperativa.classes.Account;
 import cr.ac.una.cooperativa.classes.Affiliated;
-import cr.ac.una.cooperativa.classes.Cooperativa;
-import cr.ac.una.cooperativa.util.AppContext;
+
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import cr.ac.una.cooperativa.util.FlowController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+
 
 /**
  * FXML Controller class
@@ -35,32 +36,19 @@ import javafx.scene.layout.StackPane;
 public class CarnetPrintingController extends Controller implements Initializable {
 
     @FXML
-    private StackPane mainPane;
-    @FXML
-    private BorderPane mainBorderPane;
-    @FXML
-    private HBox head;
-    @FXML
-    private ImageView companyImage;
-    @FXML
-    private AnchorPane mainAnchor;
-    @FXML
     private TextField folioField;
     @FXML
-    private Button printBtn;
-    @FXML
     private Label confirmationLabel;
-    private  Affiliated asociado;
-    @FXML
-    private Label compayLabel;
     @FXML
     private Button backBtn;
+    private  Affiliated affiliated;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+       super.createDirectory();
+       super.load();
     }    
 
     @Override
@@ -72,57 +60,60 @@ public class CarnetPrintingController extends Controller implements Initializabl
      if(isAffiliatedToPrint()){
       try {
        
-        String pdfPathAndName = super.path + asociado.getName()+".pdf";
+        String pdfPathAndName = super.path + File.separator + affiliated.getName()+".pdf";
  // Creating the pdf
         PdfWriter writer = new PdfWriter(pdfPathAndName);
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf, PageSize.A4);
      //to add the image into the pdf and to make changes in the image
-        ImageData imageData = ImageDataFactory.create(asociado.getPicture());
+        ImageData imageData = ImageDataFactory.create(affiliated.getPicture());
         Image image = new Image(imageData);
+        Div div = new Div();//just experimenting with this i just added a border
 
-        float widthInInches = 2 + (15f / 72);
-        float heightInInches = 2.5f + (15f / 72);
-// = new size for the image
-        image.scaleToFit(widthInInches * 72, heightInInches * 72);
+        float widthInInches = 100;
+        float heightInInches = 130;
+        //new size for the image
+        image.scaleToFit(widthInInches , heightInInches);
         //adding the image first
-        document.add(image);
+
+
         //adding the information
-        Paragraph p1 = new Paragraph("Nombre: "+asociado.getName()+ "\n Apellido: "+ asociado.getLastName()+ "\n Edad: "+ String.valueOf(asociado.getAge())+ "\n Folio: " + asociado.getFolio()+"\n ");
-        List<Account> accounts = asociado.getAccounts();
-        String listAccounts = "";
-        for(Account account: accounts){
-            listAccounts +="Cuenta: "+ account.getName() + " "+ "Efectivo: "+ String.valueOf(account.getMoney() +"\n");
-        
-        }
-        Paragraph p2 = new Paragraph(listAccounts);
-        document.add(p1);
-        document.add(p2);
-       
-        document.close();
-        
-        System.out.println("pdf created");
+        Paragraph p1 = new Paragraph("Nombre: "+ affiliated.getName()+ "\n Apellido: "+ affiliated.getLastName()+ "\n Edad: "+ String.valueOf(affiliated.getAge())+ "\n Folio: " + affiliated.getFolio()+"\n ");
+          Border border = new SolidBorder(ColorConstants.BLACK,3);
+          div.add(image);
+          div.add(p1);
+          div.setBorder(border);
+          div.setWidth(120);
+          document.add(div);
+          document.close();
+          System.out.println("pdf created");
+          confirmationLabel.setText("Pdf creado!");
     } catch (Exception e) {
-        e.printStackTrace();
-        System.out.println("something went wrong with the pdf");
+          confirmationLabel.setText("Fallo al crear el pdf");
+        System.out.println("something bad happened:"+e.getMessage());
     }
      }else {
-         System.out.println("There is no Affiliated To Print");
-
+         System.out.println("no affiliates");
+         confirmationLabel.setText("Fallo al crear el pdf");
      }
     }
-
+//this get the affiliate and return true
     private boolean isAffiliatedToPrint() {
                 if(getCoope().getAffiliates() != null) {
-                    List<Affiliated> asociates = getCoope().getAffiliates();
+                    List<Affiliated> affiliates = getCoope().getAffiliates();
 
-                    for (Affiliated aux : asociates) {
+                    for (Affiliated aux : affiliates) {
                         if (folioField.getText().equals(aux.getFolio())) {
-                            asociado = aux;
+                            folioField.clear();
+                            affiliated = aux;
                             return true;
                         }
                     }
                 }
                 return false;
+    }
+    @FXML
+    private void goBack(ActionEvent event) {
+        FlowController.getInstance().goView("FunctionaryWindow");
     }
 }

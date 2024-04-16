@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -63,9 +64,10 @@ public abstract class Controller {
             }else {
                 companyImage.setImage(null);
                 companyName.setText("Cooperativa");
+                save();
             }
         }catch(Exception e){
-            e.printStackTrace();
+
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -76,8 +78,7 @@ public abstract class Controller {
     }
 
     public Cooperativa getCoope() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        return company;
+        return (Cooperativa) AppContext.getInstance().get("Cooperativa");
     }
 
     public List<Account> getListAccounts() {
@@ -117,6 +118,7 @@ public abstract class Controller {
             System.out.println("The Folder already exists");
         }
         path = myResources.getPath();
+        System.out.println(path);
     }
     // it could be in an interface but, I did it here 
     public boolean isInteger(String str) {
@@ -143,4 +145,13 @@ public abstract class Controller {
         System.out.println("error given by trying to save img" + e.getMessage());
     }
 }
+    public boolean verifyingAuthenticity(TextField name, TextField lastName){
+        List<Affiliated> affiliates = getListAffiliates();
+        for (Affiliated affiliated : affiliates){
+            if(affiliated.getName().equals(name.getText()) && affiliated.getLastName().equals(lastName.getText())){
+                return false;
+            }
+        }
+        return true;
+    }
 }

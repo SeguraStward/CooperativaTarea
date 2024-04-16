@@ -48,88 +48,108 @@ public class affiliateDepositBoxController extends Controller implements Initial
     private Button search;
     private Affiliated affiliated;
     @FXML
-    private ChoiceBox<Integer> billeteCBox;
+    private ChoiceBox<Integer> billetsCBox;
     @FXML
-    private ChoiceBox<Integer> monedaCBox;
+    private ChoiceBox<Integer> coinsCBox;
     @FXML
-    private TextField numOfBillete;
+    private TextField numOfBillets;
     @FXML
-    private TextField numOfMoneda;
+    private TextField numOfCoins;
     @FXML
     private Button exitBtn;
     @FXML
     private Label userLabel;
+    @FXML
+    private Label buzonLabel;
     @Override
     public void initialize() {
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        billeteCBox.getItems().addAll(1000, 2000, 5000, 10000, 20000, 50000,0);
-        monedaCBox.getItems().addAll(5, 10, 25, 50, 100, 500,0);
-        billeteCBox.setValue(0);
-        monedaCBox.setValue(0);
+        billetsCBox.getItems().addAll(1000, 2000, 5000, 10000, 20000, 50000,0);
+        coinsCBox.getItems().addAll(5, 10, 25, 50, 100, 500,0);
+        billetsCBox.setValue(0);
+        coinsCBox.setValue(0);
     }
 
     @FXML
     private void depositAction(ActionEvent event) {
-        String numMonedas = numOfMoneda.getText();
-        String numBilletes = numOfBillete.getText();
+        String numCoins = numOfCoins.getText();
+        String numbBillets = numOfBillets.getText();
 
-            if (!numMonedas.isEmpty()) {
-              depositMonedas(numMonedas);
-            } else if (!numBilletes.isEmpty()) {
-              depositBilletes(numBilletes);
+            if (!numCoins.isEmpty()) {
+              depositCoins(numCoins);
+              buzonLabel.setText(String.valueOf(affiliated.getBuzon()));
+
+            } else if (!numbBillets.isEmpty()) {
+
+              depositBillets(numbBillets);
+              buzonLabel.setText(String.valueOf(affiliated.getBuzon()));
             }
-            billeteCBox.setValue(0);
-            monedaCBox.setValue(0);
-            numOfBillete.clear();
-            numOfMoneda.clear();
+
+
     }
 
     @FXML
     private void searchAccount(ActionEvent event) {
-        billeteCBox.setValue(0);
-        monedaCBox.setValue(0);
-        numOfBillete.clear();
-        numOfMoneda.clear();
+
         for (Affiliated aux : super.getListAffiliates()) {
             if (aux.getFolio().equals(folioField.getText())) {
                 affiliated = aux;
                 userLabel.setText(affiliated.getName());
+                buzonLabel.setText(String.valueOf(affiliated.getBuzon()));
+                labelWarning.setText("Usuario encontrado");
+                return;
             }
         }
+        labelWarning.setText("Usuario no encontrado");
     }
 
-    private void depositMonedas(String quantity) {
+    private void depositCoins(String quantity) {
         try {
             
             int amount = Integer.parseInt(quantity);
             int buzon = affiliated.getBuzon();
-            affiliated.setBuzon(buzon + monedaCBox.getValue() * amount);
+            affiliated.setBuzon(buzon + coinsCBox.getValue() * amount);
             
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             labelWarning.setText("Error al depositar monedas");
             System.out.println("Error monedas: " + e.getMessage());
 
         }
     }
     
-    private void depositBilletes(String quantity){
+    private void depositBillets(String quantity){
           try {
-            
+
             int amount = Integer.parseInt(quantity);
             int buzon = affiliated.getBuzon();
-            affiliated.setBuzon(buzon + billeteCBox.getValue() * amount);
+            affiliated.setBuzon(buzon + billetsCBox.getValue() * amount);
 
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
               labelWarning.setText("Error al depositar monedas");
               System.out.println("Error billetes : " + e.getMessage());
         }
     }
 
     @FXML
-    private void exitAction(ActionEvent event) {
+    private void exitAction(ActionEvent event) {//we only need to format once
+        // and it is when we exit the window
+
+        super.save();
+        formating();
         FlowController.getInstance().goView("affiliatedWindow");
+    }
+
+    private void formating(){
+        userLabel.setText("Usuario");
+        buzonLabel.setText("Monto del Buzon");
+        folioField.clear();
+        folioField.setPromptText("Inserte Folio");
+        numOfBillets.clear();
+        numOfCoins.clear();
+        billetsCBox.setValue(0);
+        coinsCBox.setValue(0);
     }
 }
