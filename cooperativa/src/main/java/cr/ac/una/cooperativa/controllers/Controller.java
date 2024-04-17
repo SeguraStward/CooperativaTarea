@@ -56,25 +56,23 @@ public abstract class Controller {
     // this load the company's name and image
     public void load() {
         try {
-            Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-            if(company.getName() != null && company.getImageFile() != null) {
+            Cooperativa company = getCoope();
+
                 companyName.setText(company.getName());
                 Image image = new Image(company.getImageFile());
                 companyImage.setImage(image);
-            }else {
-                companyImage.setImage(null);
-                companyName.setText("Cooperativa");
-                save();
-            }
-        }catch(Exception e){
 
-            System.out.println("Error: " + e.getMessage());
+        }catch(Exception e){
+            companyImage.setImage(null);
+            companyName.setText("Cooperativa");
+            save();
+            System.out.println("Error loading: " + e.getMessage());
         }
     }
 
     public void save() {
-        Cooperativa company = (Cooperativa) AppContext.getInstance().get("Cooperativa");
-        Json.guardar(company, "jsonFile.json");
+
+        Json.guardar(getCoope(), "jsonFile.json");
     }
 
     public Cooperativa getCoope() {

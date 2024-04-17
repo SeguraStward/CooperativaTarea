@@ -147,16 +147,16 @@ public class signInAffiliateController extends Controller implements Initializab
                 guideLabel.setText("Nombre no valido");
             } else if (lastNameField.getText().length() <= 3) {
                 condition = false;
-                guideLabel.setText("Edad no valida");
-            } else if (bufImage == null) {
-                condition = false;
-                guideLabel.setText("Captura tu foto!!!");
+                guideLabel.setText("Apellido no valido");
             } else if (!isInteger(ageField.getText())) {
                 condition = false;
                 guideLabel.setText("No es un numero");
-            } else if (Integer.parseInt(ageField.getText()) >= 18) {
+            } else if (Integer.parseInt(ageField.getText()) > 18) {
                 condition = false;
                 guideLabel.setText("Muy viejo vaya trabaje");
+            } else if (bufImage == null) {
+                condition = false;
+                guideLabel.setText("Captura tu foto!!!");
             }
         }catch(Exception e){
             condition = false;

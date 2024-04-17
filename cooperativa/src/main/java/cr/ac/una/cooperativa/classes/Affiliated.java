@@ -58,8 +58,8 @@ public class Affiliated {
         return accounts;
     }
 
-    public void addAccount(Account cuenta) {
-        accounts.add(cuenta);
+    public void addAccount(Account account) {
+        accounts.add(account);
     }
 
     public String getPicture() {
@@ -85,4 +85,6 @@ public class Affiliated {
     public void setFolio(String folio) {
         this.folio = folio;
     }
+
+
 }

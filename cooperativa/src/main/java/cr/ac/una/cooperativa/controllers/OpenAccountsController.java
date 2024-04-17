@@ -6,8 +6,6 @@ package cr.ac.una.cooperativa.controllers;
 
 import cr.ac.una.cooperativa.classes.Account;
 import cr.ac.una.cooperativa.classes.Affiliated;
-import cr.ac.una.cooperativa.classes.Cooperativa;
-import cr.ac.una.cooperativa.util.AppContext;
 import cr.ac.una.cooperativa.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
@@ -17,20 +15,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -48,13 +38,16 @@ public class OpenAccountsController extends Controller implements Initializable 
     @FXML
     private VBox allAccounts;
     private boolean dropDone = false;
-    private Affiliated asociado;
+    private Affiliated affiliated;
     private List<Account> accounts;
     @FXML
     private Label companyName;
     @FXML
     private ImageView companyImage;
-
+    @FXML
+    private Label warningLabel;
+    @FXML
+    private Label userLabel;
     /**
      * Initializes the controller class.
      *
@@ -73,6 +66,7 @@ public class OpenAccountsController extends Controller implements Initializable 
 
     @FXML
     private void goBack(ActionEvent event) {
+
         FlowController.getInstance().goView("functionaryWindow");
     }
 
@@ -132,15 +126,14 @@ public class OpenAccountsController extends Controller implements Initializable 
 
     @FXML
     private void dragDropped1(DragEvent event) {
-        boolean success = false;
+        dropDone = false;
         if (((Label) event.getGestureSource()).getParent() == affiliateAccounts) {
             Dragboard db = event.getDragboard();
             if (db.hasString()) {
-                success = true;
+                dropDone = true;
             }
         }
-        dropDone = success;
-        event.setDropCompleted(success);
+        event.setDropCompleted(dropDone);
         event.consume();
     }
 
@@ -164,7 +157,7 @@ public class OpenAccountsController extends Controller implements Initializable 
                 addAccountsBox2(db.getString());
                 Account newAccount = new Account();
                 newAccount.setName(db.getString());
-                asociado.addAccount(newAccount);
+                affiliated.addAccount(newAccount);
                 success = true;
             }
 
@@ -175,49 +168,67 @@ public class OpenAccountsController extends Controller implements Initializable 
 
     @FXML
     private void searchAffiliate(ActionEvent event) {
-        affiliateAccounts.getChildren().clear();
-        allAccounts.getChildren().clear();
 
-        List<Affiliated> associates = getCoope().getAffiliates();
-        for (Affiliated aux : associates) {
-            if (aux.getFolio().equals(folioField.getText())) {
-                asociado = aux;
-                accounts = asociado.getAccounts();
-                loadCompanyAccounts();
-                loadAffiliateAccounts();
-                folioField.clear();
-                return;
-            }
-        }
-        folioField.setPromptText("No existe el asociado");
+       try {
+           affiliateAccounts.getChildren().clear();
+           allAccounts.getChildren().clear();
+           List<Affiliated> associates = getCoope().getAffiliates();
+           for (Affiliated aux : associates) {
+               if (aux.getFolio().equals(folioField.getText())) {
+                   affiliated = aux;
+                   accounts = affiliated.getAccounts();
+                   userLabel.setText(affiliated.getName());
+                   loadCompanyAccounts();
+                   loadAffiliateAccounts();
+                   folioField.clear();
+                   return;
+               }
+           }
+       }catch (Exception e){
+           System.out.println("error buscando afiliado: " + e.getMessage());
+           warningLabel.setText("Error buscando el asociado");
+           return;
+       }
+        warningLabel.setText("Asociado no encontrado!");
+        folioField.clear();
     }
 
     private void loadCompanyAccounts() {
+        try {
 
-        List<Account> accountsComp = getCoope().getAccounts();
-        for (Account aux : accountsComp) {
-            addAccountsBox1(aux.getName());
+            List<Account> accountsComp = getCoope().getAccounts();
+            for (Account aux : accountsComp) {
+                addAccountsBox1(aux.getName());
+            }
+            warningLabel.setText("");
+        }catch (Exception e){
+            System.out.println("error obteniendo cuentas: " + e.getMessage());
+            warningLabel.setText("No existen cuentas en la cooperativa");
         }
-
     }
 
     private void loadAffiliateAccounts() {
-        if(accounts != null) {
+       try{
             for (Account aux : accounts) {
                 addAccountsBox2(aux.getName());
             }
-        }
+        }catch(Exception e){
+           warningLabel.setText("No existe el asociado\n o no tiene cuentas");
+           System.out.println("No existe el asociado\n o no tiene cuentas");
+       }
     }
 
     private boolean isAlreadyIn(String name) {
 
         System.out.println("entro en already in");
         if (accounts == null) {
+            warningLabel.setText("El asociado no tiene cuentas");
             System.out.println("accounts Null");
         } else {
             for (Account aux : accounts) {
                 if (aux.getName().equals(name)) {
                     System.out.println("devolviotrue");
+                    warningLabel.setText("");
                     return true;
                 }
             }
@@ -226,5 +237,12 @@ public class OpenAccountsController extends Controller implements Initializable 
 
         return false;
 
+    }
+
+    private void cleaning(){
+        affiliateAccounts.getChildren().clear();
+        allAccounts.getChildren().clear();
+        folioField.clear();
+        userLabel.setText("Usuario");
     }
 }
