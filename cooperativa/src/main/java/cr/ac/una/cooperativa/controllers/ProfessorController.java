@@ -68,11 +68,7 @@ public class ProfessorController extends Controller implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
-         companyName.setText(company.getName());
-         imageFile = company.getImageFile();
-         Image image = new Image(imageFile);
-         companyImage.setImage(image);
+        super.load();
          showSavedAccounts();
     }   
 
