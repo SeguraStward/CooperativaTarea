@@ -70,7 +70,7 @@ public class depositAndwithdrawalController extends Controller implements Initia
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+      super.load();
     }    
 
     @FXML
@@ -155,7 +155,7 @@ public class depositAndwithdrawalController extends Controller implements Initia
 
     @FXML
     private void getBackAction(ActionEvent event) {
-       initialize();
+        initialize();
         super.save();
         FlowController.getInstance().goView("functionaryWindow");
         

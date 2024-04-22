@@ -209,16 +209,18 @@ public class FunctionaryMaintenanceController extends Controller implements Init
         boxAffFolio.getChildren().clear();
 
         List<Affiliated> affiliates = super.getCoope().getAffiliates();
-        if (affiliates != null) {
+        if (!affiliates.isEmpty()) {
             for (Affiliated aux : affiliates) {//going through the list
                 // to find the affiliate with the same folio
                 if (search.getText().equals(aux.getFolio())) {
                     //add the searched affiliate to a different Vbox
                     addAffiliateToBox(aux, boxAffFolio);
+                    warningSearch.setText("");
                     System.out.println("listooooo");
                 } else {
                     System.out.println("nada se mostro");
                 }
+                warningSearch.setText("No se encontro el asociado");
             }
         } else {
             warningSearch.setText("Asociado no encontrado");
@@ -228,11 +230,13 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
     private void showSavedAccounts() {
 
-        if (super.getCoope().getAffiliates() != null) {
+        if (!super.getCoope().getAffiliates().isEmpty()) {
             List<Affiliated> affiliates = super.getCoope().getAffiliates();
             for (Affiliated affiliated : affiliates) {
                 addAffiliateToBox(affiliated, vboxAffiliates);
             }
+        }else{
+            warningSearch.setText("No hay affiliados");
         }
     }
 
@@ -245,6 +249,7 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
 
     private void cleanWindow() {
+        search.clear();
         userPicture.setImage(null);
         warningName.setText("");
         warningLast.setText("");
@@ -267,15 +272,19 @@ public class FunctionaryMaintenanceController extends Controller implements Init
                 warningName.setText("Nombre invalido");
                 condition = false;
             }
-           else if (lastNameField.getText().length() < 4) {//same but with lastname
+            else if (lastNameField.getText().length() < 4) {//same but with lastname
                 condition = false;
                 cleanWindow();
                 warningLast.setText("Apellido invalido");
-            }
-            else if (Integer.parseInt(ageField.getText()) > 18) {//its for childs sooo
+            }else if(!isInteger(ageField.getText())){
                 condition = false;
                 cleanWindow();
                 warningAge.setText("Edad invalida");
+            }
+            else if (Integer.parseInt(ageField.getText()) > 18 ) {//it's for kids
+                condition = false;
+                cleanWindow();
+                warningAge.setText("Muy mayor ");
             }
             else if (userPicture.getImage() == null) {//if there is no picture
                 condition = false;
@@ -285,10 +294,9 @@ public class FunctionaryMaintenanceController extends Controller implements Init
 
         }catch (Exception e) {
             condition = false;
-         System.err.println("Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
         return condition;
     }
-
 
 }

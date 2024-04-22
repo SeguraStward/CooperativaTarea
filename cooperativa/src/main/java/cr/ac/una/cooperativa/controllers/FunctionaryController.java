@@ -29,11 +29,7 @@ public class FunctionaryController extends Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
-         Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
-         companyName.setText(company.getName());
-         String imageFile = company.getImageFile();
-         Image image = new Image(imageFile);
-         companyImage.setImage(image);
+        super.load();
     }
 
     @FXML

@@ -83,15 +83,7 @@ public class FlowController {
         return loader;
     }
 
-    public void goMain() {
-        try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
-            MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
-            this.mainStage.show();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
-        }
-    }
+
 
     public void goView(String viewName) {
         goView(viewName, "Center", null);
@@ -125,77 +117,24 @@ public class FlowController {
 
     System.out.println("Nodo raíz cargado correctamente: " + root);
 
-    // Obtener la Scene actual o crear una nueva si no existe
+    // get the current scene or we creat one
     Scene scene = stage.getScene();
    
     if (scene == null) {
         scene = new Scene(root);
         stage.setScene(scene);
           scene.getStylesheets().add(getClass().
-                getResource("/styles/mainWindow.css").toExternalForm());
+                getResource("/styles/mainStyles.css").toExternalForm());
         stage.show(); // Mostrar la ventana si no se ha mostrado antes
         System.out.println("Nueva escena creada y ventana mostrada");
     } else {
         scene.setRoot(root);
         System.out.println("Nodo raíz actualizado en la escena existente");
         scene.getStylesheets().add(getClass().
-                getResource("/styles/mainWindow.css").toExternalForm());
+                getResource("/styles/mainStyles.css").toExternalForm());
   }
 }
 
-
-    public void goViewInStage(String viewName, Stage stage) {
-        FXMLLoader loader = getLoader(viewName);
-        Controller controller = loader.getController();
-        controller.setStage(stage);
-        stage.getScene().setRoot(loader.getRoot());
-        MFXThemeManager.addOn(stage.getScene(), Themes.DEFAULT, Themes.LEGACY);
-        
-    }
-
-    public void goViewInWindow(String viewName) {
-        FXMLLoader loader = getLoader(viewName);
-        Controller controller = loader.getController();
-        controller.initialize();
-        Stage stage = new Stage();
-//        stage.getIcons().add(new Image("cr/ac/una/cooperativa/resources/LogoUNArojo.png"));
-        stage.setTitle(controller.getNombreVista());
-        stage.setOnHidden((WindowEvent event) -> {
-            controller.getStage().getScene().setRoot(new Pane());
-            controller.setStage(null);
-        });
-        controller.setStage(stage);
-        Parent root = loader.getRoot();
-        Scene scene = new Scene(root);
-        MFXThemeManager.addOn(scene, Themes.DEFAULT, Themes.LEGACY);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
-    }
-
-    public void goViewInWindowModal(String viewName, Stage parentStage, Boolean resizable) {
-        FXMLLoader loader = getLoader(viewName);
-        Controller controller = loader.getController();
-        controller.initialize();
-        Stage stage = new Stage();
-       
-        stage.setTitle(controller.getNombreVista());
-        stage.setResizable(resizable);
-        stage.setOnHidden((WindowEvent event) -> {
-            controller.getStage().getScene().setRoot(new Pane());
-            controller.setStage(null);
-        });
-        controller.setStage(stage);
-        Parent root = loader.getRoot();
-        Scene scene = new Scene(root);
-        MFXThemeManager.addOn(scene, Themes.DEFAULT, Themes.LEGACY);
-        stage.setScene(scene);
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(parentStage);
-        stage.centerOnScreen();
-        stage.showAndWait();
-
-    }
 
     public Controller getController(String viewName) {
         return getLoader(viewName).getController();

@@ -57,34 +57,27 @@ public class MainWindowController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       companyImage.setImage((Image)AppContext.getInstance().get("companyImage"));
-       companyName.setText((String) AppContext.getInstance().get("companyName"));
+       super.load();
     }    
     
     @Override
     public void initialize() {
-        
+
     }
     
-    public ImageView getCompanyImage() {
-        return companyImage;
-    }
 
-    public void setCompanyImage(ImageView companyImage) {
-        this.companyImage = companyImage;
-    }
-
-    public Label getCompayLabel() {
-        return companyName;
-    }
-
-    public void setCompayLabel(Label compayLabel) {
-        this.companyName = compayLabel;
-    }
-
-   
      @FXML
-    private void onActionBtnFunctionary(ActionEvent event){
+    private void toFunctionary(ActionEvent event){
          FlowController.getInstance().goView("functionaryWindow");
     }
+
+    @FXML
+    private void toAffiliate(ActionEvent event){FlowController.getInstance().goView("affiliateWindow");}
+
+    @FXML
+    private void toProfessor(ActionEvent event){FlowController.getInstance().goView("professorWindow");
+    }
+
+
+
 }

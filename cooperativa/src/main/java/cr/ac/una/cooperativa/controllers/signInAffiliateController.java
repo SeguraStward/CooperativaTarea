@@ -136,7 +136,12 @@ public class signInAffiliateController extends Controller implements Initializab
 
     @FXML
     private void exitBtnAction(ActionEvent event) {
-    FlowController.getInstance().goView("affiliatedWindow");
+        nameField.setText("");
+        lastNameField.setText("");
+        ageField.setText("");
+        userPicture.setImage(null);
+
+        FlowController.getInstance().goView("affiliatedWindow");
     }
 
     private boolean verifyingInputs(){
