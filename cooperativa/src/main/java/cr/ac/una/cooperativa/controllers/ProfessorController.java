@@ -5,6 +5,7 @@ import cr.ac.una.cooperativa.classes.Account;
 import cr.ac.una.cooperativa.util.AppContext;
 import cr.ac.una.cooperativa.classes.Cooperativa;
 import cr.ac.una.cooperativa.classes.Json;
+import cr.ac.una.cooperativa.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.File;
@@ -68,7 +69,7 @@ public class ProfessorController extends Controller implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        super.load();
+         super.load();
          showSavedAccounts();
     }   
 
@@ -80,7 +81,7 @@ public class ProfessorController extends Controller implements Initializable{
     @FXML
     private void chooseImage(ActionEvent event) {
         
-          FileChooser fileChooser = new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecciona una imagen");
         File file = fileChooser.showOpenDialog(super.getStage());
         if (file != null) {
@@ -88,7 +89,7 @@ public class ProfessorController extends Controller implements Initializable{
                 Image image = new Image(file.toURI().toString());
                 imageFile = file.toURI().toString();
                 companyImage.setImage(image);
-                AppContext.getInstance().set("companyImage", image);
+                getCoope().setImageFile(file.toURI().toString());
             } catch (Exception e) {
                 System.err.println("Error al cargar la imagen: " + e.getMessage());
             }
@@ -97,16 +98,16 @@ public class ProfessorController extends Controller implements Initializable{
     }
     @FXML
     private void textFieldAction(ActionEvent event){
-       
+        getCoope().setName(companyInputName.getText());
         companyName.setText(companyInputName.getText());
-        
+
+
     }
     @FXML
-    private void ready(ActionEvent event) {
-        Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
-        company.setName(companyName.getText());
-        company.setImageFile(imageFile);
-        Json.guardar(company, "jsonFile.json");
+    private void backAction(ActionEvent event) {
+        super.save();
+        FlowController.getInstance().limpiarLoader("mainWindow");
+        FlowController.getInstance().goView("mainWindow");
     }
  
      @FXML
@@ -136,7 +137,7 @@ public class ProfessorController extends Controller implements Initializable{
     
     private void showSavedAccounts(){
         
-          Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
+          Cooperativa company = super.getCoope();
           List<Account> accounts = company.getAccounts();
           for(Account account : accounts){
              addAccount(account.getName());
@@ -169,7 +170,7 @@ public class ProfessorController extends Controller implements Initializable{
     private void deleteAccount(String name){
          Cooperativa company = (Cooperativa)AppContext.getInstance().get("Cooperativa");
           List<Account> accounts = company.getAccounts();
-          //lambda poderosaa encuentra el que matche y lo elimina
+          //funcion de expresion lambda poderosaa encuentra el que matche y lo elimina
           accounts.removeIf(a -> a.getName().equals(name));
     }
     
@@ -191,8 +192,7 @@ public class ProfessorController extends Controller implements Initializable{
        
          for(Account account: accounts){
             if(account.getName().equals(label.getText())){
-               Account editAccount = account;
-               editAccount.setName(textField.getText());
+                account.setName(textField.getText());
                break;
             }
         }

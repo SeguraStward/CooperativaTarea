@@ -1,0 +1,125 @@
+*{
+    firstColor:black;
+    secondColor:#dbe0e3;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-weight: bold;
+    -fx-border-radius:2px;
+    -fx-background-radius:2px;
+}
+#companyName{
+    -fx-text-fill: secondColor;
+}
+.separator{
+    /**-fx-background-color: linear-gradient(to top, transparent, black, transparent);*/
+-fx-background-color: firstColor;
+}
+
+#head{
+    -fx-spacing: 50px;
+    -fx-background-color:firstColor ;
+
+}
+
+#vboxContent{
+    -fx-background-color: secondColor;
+}
+.VBox{
+    -fx-background-color: secondColor;
+    -fx-alignment: center;
+    -fx-padding: 20 0 0 0;
+    -fx-spacing: 12px;
+}
+
+.text-field{
+    -fx-border-color: firstColor;
+    -fx-border-width: 1px;
+}
+
+.mainVbox{
+    -fx-border-width: 3px;
+    -fx-border-color: firstColor;
+}
+
+.button{
+    -fx-border-width: 1px;
+
+    -fx-border-color: firstColor;
+}
+.HBox{
+    -fx-border-color: firstColor;
+    -fx-padding: 5;
+    -fx-border-width: 1px;
+}
+
+#labelWarning{
+    -fx-text-fill: pink;
+}
+#goodLabel{
+    -fx-text-fill: lightgreen;
+}
+#userLabel{
+    -fx-text-fill: firstColor;
+}
+
+.editButton{
+    -fx-background-color: rgb(10,150,200);
+    -fx-text-fill: white;
+}
+
+.deleteButton{
+    -fx-background-color: rgb(200,100,100);
+    -fx-text-fill: white;
+}
+
+.HBoxAffiliate{
+    -fx-border-width: 1px;
+    -fx-border-color: firstColor;
+    -fx-background-color: secondColor;
+    -fx-alignment: center;
+}
+
+.labels{
+    -fx-text-fill: firstColor;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.scroll-pane{
+    -fx-border-width:0;
+    -fx-border-color:transparent;
+    -fx-background-color:secondColor;
+
+}
+.scroll-pane-active{
+    -fx-border-width:2px;
+    -fx-border-color:firstColor;
+}
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: secondColor;
+    -fx-padding: 3px;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: firstColor;
+    -fx-background-insets: 0 2 0 2;
+    -fx-background-radius: 5px;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: secondColor;
+    -fx-padding: 3px;
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: firstColor;
+    -fx-background-insets: 2 0 2 0;
+    -fx-background-radius: 5px;
+}
+
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}

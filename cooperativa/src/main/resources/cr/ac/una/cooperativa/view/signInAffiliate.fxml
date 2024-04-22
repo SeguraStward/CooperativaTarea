@@ -12,62 +12,83 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.signInAffiliateController">
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.signInAffiliateController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
-         <top>
-            <HBox fx:id="head" alignment="CENTER" prefHeight="90.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </HBox>
-         </top>
-         <center>
-            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox alignment="TOP_RIGHT" prefHeight="278.0" prefWidth="170.0" spacing="5.0" HBox.hgrow="ALWAYS">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
+         <children>
+            <BorderPane prefHeight="439.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <top>
+                  <HBox fx:id="head" alignment="CENTER" prefHeight="90.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Nombre " />
-                        <TextField fx:id="lastNameField" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Apellido" />
-                        <TextField fx:id="ageField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Edad" />
-                        <Button fx:id="captureImgBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#captureImgAction" prefHeight="25.0" prefWidth="170.0" text="Capturar/Empezar webcam" />
-                        <Button fx:id="deleteImgBtn" layoutX="10.0" layoutY="110.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#deleteImgAction" prefHeight="25.0" prefWidth="170.0" text="Eliminar " />
-                        <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="170.0" text="Guardar todo" />
-                        <Button fx:id="exitBtn" layoutX="10.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#exitBtnAction" prefHeight="25.0" prefWidth="170.0" text="Salir" />
-                        <HBox prefHeight="34.0" prefWidth="171.0">
+                        <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </HBox>
+               </top>
+               <center>
+                  <VBox fx:id="vboxContent" alignment="CENTER" styleClass="mainVbox" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="331.0" prefWidth="600.0" spacing="10.0">
                            <children>
-                              <Label prefHeight="32.0" prefWidth="70.0" text="Folio: ">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="userFolio" prefHeight="33.0" prefWidth="126.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
+                              <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="231.0" styleClass="VBox" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Nombre " />
+                                    <TextField fx:id="lastNameField" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Apellido" />
+                                    <TextField fx:id="ageField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Edad" />
+                                    <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="170.0" text="Registrar" />
+                                    <HBox alignment="CENTER" prefHeight="34.0" prefWidth="149.0">
+                                       <children>
+                                          <Label prefHeight="32.0" prefWidth="50.0" text="Folio: ">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="userFolio" prefHeight="33.0" prefWidth="100.0">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="guideLabel" prefHeight="31.0" prefWidth="189.0" />
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="279.0" prefWidth="0.0" HBox.hgrow="NEVER" />
+                              <ImageView fx:id="userPicture" fitHeight="269.0" fitWidth="279.0" nodeOrientation="INHERIT" pickOnBounds="true" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
                            </children>
                         </HBox>
-                        <Label fx:id="guideLabel" prefHeight="31.0" prefWidth="207.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="600.0" styleClass="HBox" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitBtnAction" prefHeight="25.0" prefWidth="100.0" text="Salir" />
+                              <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="captureImgBtn" mnemonicParsing="false" onAction="#captureImgAction" prefHeight="25.0" prefWidth="194.0" text="Capturar/Empezar webcam" />
+                                    <Button fx:id="deleteImgBtn" mnemonicParsing="false" onAction="#deleteImgAction" prefHeight="25.0" prefWidth="111.0" text="Eliminar foto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="283.0" prefWidth="19.0" />
-                  <ImageView fx:id="userPicture" fitHeight="277.0" fitWidth="280.0" nodeOrientation="INHERIT" pickOnBounds="true" />
-               </children>
-            </HBox>
-         </center>
-      </BorderPane>
+               </center>
+            </BorderPane>
+         </children>
+      </VBox>
    </children>
 </StackPane>

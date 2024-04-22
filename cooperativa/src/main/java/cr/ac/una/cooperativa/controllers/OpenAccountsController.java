@@ -107,8 +107,12 @@ public class OpenAccountsController extends Controller implements Initializable 
 
         label.setOnDragDone(event -> {
             if (event.getTransferMode() == TransferMode.MOVE && dropDone) {
-                accounts.removeIf(e -> e.getName().equals(label.getText()));
-                affiliateAccounts.getChildren().remove(label);
+                if( isDeletable(label.getText())) {
+                    accounts.removeIf(e -> e.getName().equals(label.getText()));
+                    affiliateAccounts.getChildren().remove(label);
+                }else{
+                    warningLabel.setText("La cuenta tiene dinero\nno puede ser eliminada");
+                }
                 dropDone = false;
 
             }
@@ -181,6 +185,7 @@ public class OpenAccountsController extends Controller implements Initializable 
                    loadCompanyAccounts();
                    loadAffiliateAccounts();
                    folioField.clear();
+                   warningLabel.setText("Encontrado");
                    return;
                }
            }
@@ -244,5 +249,14 @@ public class OpenAccountsController extends Controller implements Initializable 
         allAccounts.getChildren().clear();
         folioField.clear();
         userLabel.setText("Usuario");
+    }
+
+    private boolean isDeletable(String name){
+        for(Account accountsAux : accounts){
+            if(accountsAux.getName().equals(name)){
+                return accountsAux.getMoney() == 0;
+            }
+        }
+        return false;
     }
 }

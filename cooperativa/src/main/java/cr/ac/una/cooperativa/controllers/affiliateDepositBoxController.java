@@ -82,7 +82,8 @@ public class affiliateDepositBoxController extends Controller implements Initial
               depositCoins(numCoins);
               buzonLabel.setText(String.valueOf(affiliated.getBuzon()));
 
-            } else if (!numbBillets.isEmpty()) {
+            }
+            if (!numbBillets.isEmpty()) {
 
               depositBillets(numbBillets);
               buzonLabel.setText(String.valueOf(affiliated.getBuzon()));
@@ -112,7 +113,7 @@ public class affiliateDepositBoxController extends Controller implements Initial
             int amount = Integer.parseInt(quantity);
             int buzon = affiliated.getBuzon();
             affiliated.setBuzon(buzon + coinsCBox.getValue() * amount);
-            
+            formating();
         } catch (Exception e) {
             labelWarning.setText("Error al depositar monedas");
             System.out.println("Error monedas: " + e.getMessage());
@@ -126,7 +127,7 @@ public class affiliateDepositBoxController extends Controller implements Initial
             int amount = Integer.parseInt(quantity);
             int buzon = affiliated.getBuzon();
             affiliated.setBuzon(buzon + billetsCBox.getValue() * amount);
-
+            formating();
         } catch (Exception e) {
               labelWarning.setText("Error al depositar monedas");
               System.out.println("Error billetes : " + e.getMessage());
@@ -134,19 +135,19 @@ public class affiliateDepositBoxController extends Controller implements Initial
     }
 
     @FXML
-    private void exitAction(ActionEvent event) {//we only need to format once
-        // and it is when we exit the window
+    private void exitAction(ActionEvent event) {
 
+        userLabel.setText("Usuario");
+        buzonLabel.setText("Monto del Buzon");
+        folioField.clear();
+        folioField.setPromptText("Inserte Folio");
         super.save();
         formating();
         FlowController.getInstance().goView("affiliatedWindow");
     }
 
     private void formating(){
-        userLabel.setText("Usuario");
-        buzonLabel.setText("Monto del Buzon");
-        folioField.clear();
-        folioField.setPromptText("Inserte Folio");
+
         numOfBillets.clear();
         numOfCoins.clear();
         billetsCBox.setValue(0);

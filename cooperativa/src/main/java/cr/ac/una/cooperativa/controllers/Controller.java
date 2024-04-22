@@ -57,10 +57,11 @@ public abstract class Controller {
     public void load() {
         try {
             Cooperativa company = getCoope();
+            companyName.setText(company.getName());
+            String imgFile = company.getImageFile();
+            Image image = new Image(imgFile);
+            companyImage.setImage(image);
 
-                companyName.setText(company.getName());
-                Image image = new Image(company.getImageFile());
-                companyImage.setImage(image);
 
         }catch(Exception e){
             companyImage.setImage(null);
@@ -72,7 +73,7 @@ public abstract class Controller {
 
     public void save() {
 
-        Json.guardar(getCoope(), "jsonFile.json");
+        Json.guardar(getCoope(),"jsonFile.json");
     }
 
     public Cooperativa getCoope() {
