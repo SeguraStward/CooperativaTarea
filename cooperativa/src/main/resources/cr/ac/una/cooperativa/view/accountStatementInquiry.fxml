@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.accountStatementInquiryController">
+<StackPane fx:id="mainPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.accountStatementInquiryController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="398.0" prefWidth="599.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="429.0" prefWidth="648.0" StackPane.alignment="CENTER">
          <top>
             <HBox fx:id="head" alignment="CENTER" prefHeight="100.0" prefWidth="599.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
@@ -37,12 +37,12 @@
             </HBox>
          </top>
          <center>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox prefHeight="337.0" prefWidth="690.0" BorderPane.alignment="CENTER">
                <children>
                   <Separator prefWidth="200.0" />
                   <HBox>
                      <children>
-                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="298.0" prefWidth="298.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="298.0" prefWidth="298.0" spacing="10.0">
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
@@ -56,12 +56,12 @@
                               <HBox alignment="CENTER">
                                  <children>
                                     <TextField fx:id="folioField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="153.0" promptText="Ingresa tu folio" />
-                                    <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="19.0" prefWidth="54.0" text="Buscar" />
+                                    <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="25.0" prefWidth="63.0" text="Buscar" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Label fx:id="label" prefHeight="25.0" prefWidth="139.0" text="Selecciona tipo de cuenta" />
+                                    <Label prefHeight="25.0" prefWidth="139.0" text="Selecciona tipo de cuenta" />
                                  </children>
                               </HBox>
                               <ChoiceBox fx:id="accountChoiceBox" prefHeight="25.0" prefWidth="153.0" />
@@ -75,9 +75,9 @@
                            </padding>
                         </VBox>
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <VBox prefHeight="267.0" prefWidth="289.0" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="298.0" prefWidth="365.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <TextArea fx:id="infoField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="296.0" prefWidth="298.0" VBox.vgrow="ALWAYS" />
+                              <TextArea fx:id="infoField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="278.0" prefWidth="310.0" VBox.vgrow="ALWAYS" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

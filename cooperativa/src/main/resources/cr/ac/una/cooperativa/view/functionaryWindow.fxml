@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryController">
+<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.FunctionaryController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="84.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -33,7 +33,7 @@
             </HBox>
          </top>
          <center>
-            <VBox fx:id="selectionVbox" alignment="CENTER" prefHeight="281.0" prefWidth="449.0" spacing="7.0">
+            <VBox fx:id="Content" alignment="CENTER" prefHeight="281.0" prefWidth="449.0" spacing="7.0" BorderPane.alignment="CENTER">
                <children>
                   <MFXButton fx:id="mantenimientoBtn" buttonType="RAISED" depthLevel="LEVEL3" onAction="#goMainteinance" prefHeight="25.0" prefWidth="200.0" text="Mantenimiento de asociados">
                      <VBox.margin>

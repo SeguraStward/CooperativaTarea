@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.depositAndwithdrawalController">
+<StackPane fx:id="mainPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.depositAndwithdrawalController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" prefHeight="90.0" prefWidth="525.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -36,7 +36,7 @@
             </HBox>
          </top>
          <center>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox fx:id="Content" BorderPane.alignment="CENTER">
                <children>
                   <Separator prefWidth="200.0" />
                   <HBox>
@@ -121,6 +121,9 @@
                </children>
             </VBox>
          </center>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
       </BorderPane>
    </children>
 </StackPane>

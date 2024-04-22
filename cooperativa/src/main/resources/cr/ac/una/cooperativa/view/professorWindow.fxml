@@ -15,9 +15,9 @@
 
 <StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.ProfessorController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" prefHeight="367.0" prefWidth="449.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="79.0" prefWidth="449.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" prefHeight="79.0" prefWidth="449.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="56.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -51,18 +51,18 @@
             </HBox>
          </top>
          <center>
-            <VBox fx:id="vboxContent" alignment="CENTER" BorderPane.alignment="CENTER">
+            <VBox fx:id="Content" alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="11.0" prefWidth="449.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <MFXTextField fx:id="accountField" floatMode="DISABLED" prefHeight="29.0" prefWidth="173.0" promptText="New account" />
+                        <MFXTextField fx:id="accountField" floatMode="DISABLED" prefHeight="29.0" prefWidth="173.0" promptText="Nueva cuenta" HBox.hgrow="ALWAYS" />
                         <MFXButton fx:id="addAccountBtn" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL4" onAction="#addBtnAction" prefHeight="25.0" prefWidth="68.0" rippleColor="#868181" text="Agregar" />
                         <MFXButton fx:id="backBtn" buttonType="RAISED" depthLevel="LEVEL4" onAction="#backAction" prefHeight="20.0" prefWidth="55.0" text="Salir" />
                      </children>
                   </HBox>
                   <ScrollPane fx:id="accountScroll" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" prefHeight="208.0" prefWidth="449.0" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox fx:id="vboxAccounts" alignment="CENTER" prefHeight="219.0" prefWidth="427.0" />
+                        <VBox fx:id="vboxAccounts" alignment="CENTER" prefHeight="235.0" prefWidth="579.0" />
                      </content>
                   </ScrollPane>
                </children>

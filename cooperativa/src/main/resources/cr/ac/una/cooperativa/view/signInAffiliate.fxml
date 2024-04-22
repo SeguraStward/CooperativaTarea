@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,83 +13,81 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.signInAffiliateController">
+<StackPane fx:id="mainPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.signInAffiliateController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
-         <children>
-            <BorderPane prefHeight="439.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
-               <top>
-                  <HBox fx:id="head" alignment="CENTER" prefHeight="90.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="600.0" maxWidth="800.0" prefHeight="439.0" prefWidth="600.0" StackPane.alignment="CENTER">
+         <top>
+            <HBox fx:id="head" alignment="CENTER" prefHeight="115.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <center>
+            <VBox fx:id="Content" alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="331.0" prefWidth="600.0">
                      <children>
-                        <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label fx:id="companyName" prefHeight="36.0" prefWidth="155.0" text="Cooperativa" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </HBox>
-               </top>
-               <center>
-                  <VBox fx:id="vboxContent" alignment="CENTER" styleClass="mainVbox" BorderPane.alignment="CENTER">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="331.0" prefWidth="600.0" spacing="10.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="231.0" styleClass="VBox" HBox.hgrow="NEVER">
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="279.0" prefWidth="231.0" styleClass="VBox" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Nombre " />
-                                    <TextField fx:id="lastNameField" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Apellido" />
-                                    <TextField fx:id="ageField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Edad" />
-                                    <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="170.0" text="Registrar" />
-                                    <HBox alignment="CENTER" prefHeight="34.0" prefWidth="149.0">
-                                       <children>
-                                          <Label prefHeight="32.0" prefWidth="50.0" text="Folio: ">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="userFolio" prefHeight="33.0" prefWidth="100.0">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <Label fx:id="guideLabel" prefHeight="31.0" prefWidth="189.0" />
-                                 </children>
-                              </VBox>
-                              <Separator orientation="VERTICAL" prefHeight="279.0" prefWidth="0.0" HBox.hgrow="NEVER" />
-                              <ImageView fx:id="userPicture" fitHeight="269.0" fitWidth="279.0" nodeOrientation="INHERIT" pickOnBounds="true" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="600.0" styleClass="HBox" VBox.vgrow="ALWAYS">
-                           <children>
+                              <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Nombre " />
+                              <TextField fx:id="lastNameField" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Apellido" />
+                              <TextField fx:id="ageField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" promptText="Edad" />
+                              <Button fx:id="saveBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#saveAffiliateInfo" prefHeight="25.0" prefWidth="170.0" text="Registrar" />
                               <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitBtnAction" prefHeight="25.0" prefWidth="100.0" text="Salir" />
-                              <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER" prefHeight="34.0" prefWidth="149.0">
+                                 <children>
+                                    <Label prefHeight="32.0" prefWidth="50.0" text="Folio: ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="userFolio" prefHeight="33.0" prefWidth="100.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="guideLabel" prefHeight="31.0" prefWidth="189.0" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="279.0" prefWidth="0.0" HBox.hgrow="NEVER" />
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fx:id="userPicture" fitHeight="279.0" fitWidth="354.0" nodeOrientation="INHERIT" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../../../OneDrive/Imágenes/OIP.jpg" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER">
                                  <children>
                                     <Button fx:id="captureImgBtn" mnemonicParsing="false" onAction="#captureImgAction" prefHeight="25.0" prefWidth="194.0" text="Capturar/Empezar webcam" />
                                     <Button fx:id="deleteImgBtn" mnemonicParsing="false" onAction="#deleteImgAction" prefHeight="25.0" prefWidth="111.0" text="Eliminar foto" />
                                  </children>
                               </HBox>
                            </children>
-                        </HBox>
+                        </VBox>
                      </children>
-                  </VBox>
-               </center>
-            </BorderPane>
-         </children>
-      </VBox>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
    </children>
 </StackPane>

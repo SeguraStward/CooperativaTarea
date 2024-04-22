@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.OpenAccountsController">
+<StackPane fx:id="mainPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.cooperativa.controllers.OpenAccountsController">
    <children>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="514.0" StackPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" prefHeight="400.0" prefWidth="600.0" StackPane.alignment="CENTER">
          <top>
-            <HBox fx:id="head" alignment="CENTER" prefHeight="90.0" prefWidth="525.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="head" alignment="CENTER" prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="companyImage" fitHeight="70.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -36,21 +35,14 @@
             </HBox>
          </top>
          <center>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <VBox fx:id="Content" alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Separator prefWidth="200.0" />
-                  <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="514.0">
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label fx:id="userLabel" alignment="CENTER" prefHeight="28.0" prefWidth="170.0" text="Usuario " />
-                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="159.0" text="Inactivas" />
-                        <Label alignment="CENTER" layoutX="212.0" layoutY="10.0" prefHeight="27.0" prefWidth="156.0" text="Activas" />
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="246.0" prefWidth="182.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="261.0" prefWidth="196.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox>
+                              <Label fx:id="userLabel" alignment="CENTER" prefHeight="28.0" prefWidth="170.0" text="Usuario " VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER">
                                  <children>
                                     <MFXTextField fx:id="folioField" alignment="CENTER" floatMode="DISABLED" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="100.0" promptText="Ingresa Folio" />
                                     <Button fx:id="folioBtn" alignment="CENTER" mnemonicParsing="false" onAction="#searchAffiliate" prefHeight="30.0" prefWidth="72.0" text="Ingresar" />
@@ -63,16 +55,26 @@
                         </VBox>
                         <HBox alignment="TOP_CENTER" prefHeight="278.0" prefWidth="311.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scrollLeft" hbarPolicy="NEVER" prefHeight="245.0" prefWidth="200.0">
-                                 <content>
-                                    <VBox fx:id="allAccounts" alignment="TOP_CENTER" onDragDropped="#dragDropped1" onDragOver="#dragOver1" prefHeight="243.0" prefWidth="166.0" />
-                                 </content>
-                              </ScrollPane>
-                              <ScrollPane fx:id="scrollRight" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
-                                 <content>
-                                    <VBox fx:id="affiliateAccounts" alignment="TOP_CENTER" onDragDropped="#dragDropped2" onDragOver="#dragOver2" prefHeight="243.0" prefWidth="166.0" />
-                                 </content>
-                              </ScrollPane>
+                              <VBox prefHeight="278.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="21.0" prefWidth="200.0" text="Inactivas" />
+                                    <ScrollPane fx:id="scrollLeft" hbarPolicy="NEVER" prefHeight="246.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <content>
+                                          <VBox fx:id="allAccounts" alignment="TOP_CENTER" onDragDropped="#dragDropped1" onDragOver="#dragOver1" prefHeight="287.0" prefWidth="177.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="21.0" prefWidth="200.0" text="Activas" VBox.vgrow="ALWAYS" />
+                                    <ScrollPane fx:id="scrollRight" hbarPolicy="NEVER" prefHeight="258.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <content>
+                                          <VBox fx:id="affiliateAccounts" alignment="TOP_CENTER" onDragDropped="#dragDropped2" onDragOver="#dragOver2" prefHeight="287.0" prefWidth="178.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>

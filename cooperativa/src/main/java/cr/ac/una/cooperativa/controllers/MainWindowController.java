@@ -72,7 +72,7 @@ public class MainWindowController extends Controller implements Initializable {
     }
 
     @FXML
-    private void toAffiliate(ActionEvent event){FlowController.getInstance().goView("affiliateWindow");}
+    private void toAffiliate(ActionEvent event){FlowController.getInstance().goView("affiliatedWindow");}
 
     @FXML
     private void toProfessor(ActionEvent event){FlowController.getInstance().goView("professorWindow");

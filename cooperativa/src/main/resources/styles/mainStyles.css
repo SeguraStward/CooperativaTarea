@@ -1,8 +1,9 @@
 *{
     firstColor:black;
     secondColor:#dbe0e3;
-    -fx-font-family: "Roboto Thin";
-    -fx-font-weight: bold;
+    -fx-font-family: "System";
+    -fx-font-style: italic;
+    -fx-font-weight: bold ;
     -fx-border-radius:2px;
     -fx-background-radius:2px;
 }
@@ -17,17 +18,23 @@
 #head{
     -fx-spacing: 50px;
     -fx-background-color:firstColor ;
-
+    -fx-border-radius:3px 3px 0 0;
+    -fx-background-radius:3px 3px 0 0;
 }
 
-#vboxContent{
+#Content{
     -fx-background-color: secondColor;
+    -fx-alignment: center;
+    -fx-padding: 20;
+    -fx-spacing: 12px;
+    -fx-border-width: 3px;
+    -fx-border-color: firstColor;
+    -fx-border-radius:0 0 2px 2px;
+    -fx-background-radius:0 0 2px 2px;
 }
 .VBox{
     -fx-background-color: secondColor;
-    -fx-alignment: center;
-    -fx-padding: 20 0 0 0;
-    -fx-spacing: 12px;
+
 }
 
 .text-field{
@@ -35,15 +42,24 @@
     -fx-border-width: 1px;
 }
 
-.mainVbox{
-    -fx-border-width: 3px;
-    -fx-border-color: firstColor;
-}
 
 .button{
     -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-background-color: firstColor;
+    -fx-text-fill: secondColor;
+}
 
-    -fx-border-color: firstColor;
+.button:hover{
+    -fx-border-color:firstColor;
+    -fx-background-color: lightBlue;
+    -fx-text-fill: firstColor;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);
+
+}
+.button:pressed {
+    -fx-background-color: rgb(10,130,230);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 2);
 }
 .HBox{
     -fx-border-color: firstColor;
@@ -53,6 +69,7 @@
 
 #labelWarning{
     -fx-text-fill: pink;
+
 }
 #goodLabel{
     -fx-text-fill: lightgreen;
@@ -60,15 +77,23 @@
 #userLabel{
     -fx-text-fill: firstColor;
 }
-
-.editButton{
-    -fx-background-color: rgb(10,150,200);
-    -fx-text-fill: white;
+.deleteButton{
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-background-color: firstColor;
+    -fx-text-fill: secondColor;
 }
 
-.deleteButton{
-    -fx-background-color: rgb(200,100,100);
-    -fx-text-fill: white;
+.deleteButton:hover{
+    -fx-border-color:firstColor;
+    -fx-background-color: pink;
+    -fx-text-fill: firstColor;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);
+
+}
+.deleteButton:pressed {
+    -fx-background-color: rgb(200,10,50);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 2);
 }
 
 .HBoxAffiliate{
@@ -117,9 +142,10 @@
 }
 
 .image-view {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-    -fx-background-radius: 15;
-    -fx-border-radius: 15;
-    -fx-border-color: black;
-    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(256,256,256,0.8), 15, 0, 0, 2);
+}
+
+
+#mainBorderPane{
+    -fx-padding:50px;
 }

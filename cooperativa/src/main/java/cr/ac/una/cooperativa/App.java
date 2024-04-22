@@ -23,8 +23,12 @@ public class App extends Application {
        Cooperativa company = Json.cargar("jsonFile.json");     
        AppContext.getInstance().set("Cooperativa",company);
        FlowController.getInstance().InitializeFlow(stage, null);
-       FlowController.getInstance().goView("mainWindow");
-
+       String vista = (String)AppContext.getInstance().get("Vista");
+       if(vista !=null){
+          FlowController.getInstance().goView(vista);
+       }else{
+          FlowController.getInstance().goView("mainWindow");
+       }
     }
     
     public static void main(String[] args) {
